@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .price-box {
+            display: inline-block;
+            width: 150px;
+            height: 240px;
+            background: orange;
+            border-radius: 15px;
+            border: 1px solid #ccc;
+        }
+
+        .top {
+            text-align: center;
+            height: 100px;
+        }
+
+        .top>.title {
+            display: inline-block;
+            margin-top: 10px;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+
+        }
+
+        .top>.info {
+            display: inline-block;
+            margin-top: 10px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .middle {
+
+            background: white;
+            height: 85px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .bottom {
+            background: white;
+            height: 40px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            text-align: center;
+        }
+
+        span.smallDigit {
+            font-size: 14px;
+        }
+
+        span.bigDigit {
+            font-size: 28px;
+        }
+        .middleText {
+            margin-top: 15px;
+        }
+
+        .middleText > p {
+            font-weight: normal;
+            font-size: 12px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            width: 50px;
+            height: 20px;
+            background: orange;
+            border-radius: 5px;
+            color: white;
+            padding: 5px;
+        }
+
+        .red {
+            background: red;
+        }
+
+        .red .clasaMea {
+            background: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="price-box red">
+        <div class="top">
+            <span class="title">Beginner</span>
+            <br>
+            <span class="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis varius </span>
+        </div>
+        <div class="middle">
+            <div class="middleText">
+                <span class="smallDigit">$</span>
+                <span class="bigDigit">1</span>
+                <span class="smallDigit">.99/mo</span>
+                <p>1 HTML site</p>
+            </div>
+        </div>
+        <div class="bottom">
+            <a class="buy-button">Buy</a>
+        </div>
+    </div>
+</body>
+
+</html>

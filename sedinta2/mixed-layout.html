@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mixed layout</title>
+    <style>
+        body {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            height: 50px;
+        }
+
+        .left {
+            display: inline-block;
+            background: black;
+            height: calc(100vh - 50px);
+            width: 200px;
+        }
+
+        .middle {
+            display: inline-block;
+            background: red;
+            /*#ff00000 = #f00 = rgb(255, 0, 0)*/
+            height: calc(100vh - 50px);
+            width: calc(100vw - 500px);
+            min-width: 400px;
+        }
+
+        .right {
+            display: inline-block;
+            background: yellow;
+            width: 300px;
+            height: calc(100vh - 50px);
+            position: absolute;
+            right: 0;
+        }
+        
+        .container {
+            position: relative;
+            min-width: 900px;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header"></div>
+        <div class="left"></div>
+        <div class="middle"></div>
+        <div class="right"></div>
+    </div>
+</body>
+
+</html>
