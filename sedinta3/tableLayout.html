@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Table layout</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 2px 0;
+        }
+
+        th {
+            background: rgb(1, 131, 148);
+            padding: 10px;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: normal;
+        }
+
+        th:first-child {
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: normal;
+            text-align: right;
+            border-bottom: 1px solid rgb(1, 131, 148);
+        }
+
+        td:first-child {
+            border-bottom: 0 solid rgb(1, 131, 148);
+            width: 30%;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        td:nth-child(2),
+        td:nth-child(3) {
+            width: 100px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background: white;
+        }
+
+        tr:nth-child(odd) {
+            background: #ddd;
+        }
+        .content {
+            height: 400px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <table>
+            <tr>
+                <th>Film Title</th>
+                <th>Released</th>
+                <th>Studio</th>
+                <th>Worldwide Gross</th>
+                <th>Domestic Gross</th>
+                <th>Foreign Gross</th>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+            <tr>
+                <td>Frozen</td>
+                <td>2013</td>
+                <td>Disney</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+                <td>$123.125.1215</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
