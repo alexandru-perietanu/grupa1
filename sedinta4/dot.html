@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>dot</title>
+    <style>
+        .circle {
+            border-radius: 50%;
+            background: red;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .circle:after {
+            display: inline-block;
+            content: "";
+            border-radius: 50%;
+            background: green;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%); 
+            transition: width .5s, height .5s, opacity .5s;
+        }
+
+        .circle:hover:after {
+            width: 25px;
+            height: 25px;
+            opacity: 1;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <div class="circle"></div>
+</body>
+
+</html>

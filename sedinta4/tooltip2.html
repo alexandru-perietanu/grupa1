@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>tooltip</title>
+    <style>
+        .tooltip-div {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: relative;
+        }
+        /* .tooltip-div:before {
+            content: "before";
+            background: yellow;
+            border-radius: 5px;
+        } */
+
+        /* .tooltip-div:after {
+            
+            content: "after";
+            background: green;
+            border-radius: 5px;
+        } */
+
+        .tooltip-div:hover:after {
+            content: attr(data-info);
+            position: absolute;
+            background: green;
+            padding: 5px;
+            border-radius: 5px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 150px;
+            min-width: 50px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            
+        }
+
+        .tooltip-div:hover:before {
+            content: "";
+            position: absolute;
+            border-top: 8px transparent solid;
+            border-right: 8px transparent solid;
+            border-bottom: 8px green solid;
+            border-left: 8px transparent solid;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+
+        .mock {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-top: 40px transparent solid;
+            border-right: 40px transparent solid;
+            border-bottom:40px green solid;
+            border-left: 40px transparent solid;
+        }
+
+    </style>
+</head>
+
+<body>
+   <div data-info="tooltip1" class="tooltip-div">textul din div</div>
+   <div data-info="a" class="tooltip-div">textul din div</div>
+   <div data-info="tooltip2" class="tooltip-div">textul din div</div>
+   <div title="tooltip3 tooltip3 tooltip3asfdasf tooltip3 tooltip3 tooltip3asfdasftooltip3 tooltip3 tooltip3asfdasftooltip3 tooltip3 tooltip3asfdasftooltip3 tooltip3 tooltip3asfdasftooltip3 tooltip3 tooltip3asfdasftooltip3 tooltip3 tooltip3asfdasftooltip3 tooltip3 tooltip3asfdasf" data-info="tooltip3 tooltip3 tooltip3asfdasf tooltip3 tooltip3 tooltip3asfdasftooltip3 tooltip3 tooltip3asfdasftooltip3 tooltip3 tooltip3asfdasftooltip3 tooltip3 tooltip3asfdasftooltip3 tooltip3 tooltip3asfdasftooltip3 tooltip3 tooltip3asfdasftooltip3 tooltip3 tooltip3asfdasf" class="tooltip-div">textul din div</div>
+    <div class="mock"></div>
+</body>
+
+</html>
