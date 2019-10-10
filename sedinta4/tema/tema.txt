@@ -1,0 +1,10 @@
+Ex1. sa se afiseze tooltipul in stanga, sus si din dreapta
+
+Ex2. implementati unul din aceste efecte (sau amandoua) 
+https://www.w3schools.com/howto/howto_css_image_overlay.asp
+incercati sa nu va uitati la solutie initial (daca va uitati nu va furati decat pe voi)
+
+Ex3. incercati sa implementati macar unul din efectele de pe aceste butoane
+https://codepen.io/davidicus/pen/emgQKJ
+
+Ex4. Incercati sa implementati acest efect https://codepen.io/bugrakocak/full/xodpBR
