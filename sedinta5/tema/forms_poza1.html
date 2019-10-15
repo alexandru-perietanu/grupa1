@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <style>
+        .container {
+            padding: 30px;
+            background: #39b7dd;
+            display: inline-block;
+        }
+        .left {
+
+            background: #16272e;
+            width: 450px;
+            box-sizing: border-box;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .left input[type="text"] {
+            font-family: Arial, Helvetica, sans-serif;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            color: #39b7dd;
+            border: 0;
+            border-bottom: 2px solid #39b7dd;
+            background: transparent;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .left input[type="text"]:focus {
+            outline: 0;
+        }
+
+        textarea:focus {
+            outline: 0;
+        }
+
+        .left textarea {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 0;
+            width: 100%;
+            border-bottom: 2px solid #39b7dd;
+            color: #39b7dd;
+            background: transparent;
+        }
+
+        .left ::placeholder,
+        .left textarea {
+            font-size: 18px;
+            
+            color: #39b7dd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <div><input type="text" placeholder="Name"></div>
+            <div><input type="text" placeholder="Email Address"></div>
+            <div><input type="text" placeholder="Phone"></div>
+            <div><input type="text" placeholder="Subject"></div>
+            <div><textarea placeholder="Message" rows="6"></textarea></div>
+
+        </div>
+        <div class="right_top">
+            <input type="text" placeholder="Name">
+            <input type="text" placeholder="Email Address">
+            <input type="text" placeholder="Phone">
+            <input type="text" placeholder="Subject">
+            <textarea placeholder="Message"></textarea>
+        </div>
+        <div class="right_bottom">
+            CONTACT US FORM
+        </div>
+    </div>
+</body>
+
+</html>

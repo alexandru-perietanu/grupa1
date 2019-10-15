@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <style>
+        .fieldset-checkbox label {
+            /* background: red; */
+            width: 100%;
+            display: inline-block; 
+            position: absolute;  
+            padding-left: 20px;
+            margin-left: -20px;
+        }
+        .fieldset-checkbox div{
+            box-sizing: border-box;
+            position: relative;
+        }
+        input[type=checkbox] {
+            position: relative;
+            width: 1em;
+            height: 1em;
+            background: red;
+            border: 1px solid red;
+            /* Adjusts the position of the checkboxes on the text baseline */
+            vertical-align: -2px;
+            /* Set here so that Windows' High-Contrast Mode can override */
+            color: green;
+            visibility: hidden;
+        }
+
+        input[type=checkbox]::before {
+            content: "✔";
+            position: absolute;
+            font-size: 1.2em;
+            right: 0;
+            top: -0.3em;
+            visibility: hidden;
+        }
+
+        input[type=checkbox]:checked::before {
+            /* Use `visibility` instead of `display` to avoid recalculating layout */
+            visibility: visible;
+        }
+
+        input[type=checkbox]:disabled {
+            border-color: black;
+            background: #ddd;
+            color: gray;
+        }
+
+        .fieldset1 input[type="text"] {
+            padding: 10px;
+            border: none;
+            margin: 5px;
+            border-bottom: 2px solid black;
+        }
+
+        .fieldset1 input[type="text"]:focus {
+            outline: 0;
+        }
+
+        ::placeholder {
+            color: blue;
+        }
+
+        .fieldset1 ::placeholder {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <fieldset class="fieldset1">
+            <legend>title</legend>
+            <div>
+                <label for="input">Nume:</label>
+                <input id="nume" type="text" placeholder="placeholder text">
+            </div>
+            <div><input type="text" value="text care exista deja"></div>
+            <div><input type="text"></div>
+            <div><input type="text"></div>
+        </fieldset>
+
+        <fieldset class="fieldset-checkbox">
+            <legend>title</legend>
+            <div>
+                <input id="checkbox1" type="checkbox" checked>
+                <label for="checkbox1">Nume</label>
+            </div>
+            <div>
+                <input id="checkbox2" type="checkbox">
+                <label for="checkbox2">Nume</label>
+            </div>
+            <div>
+                <input id="checkbox3" type="checkbox">
+                <label for="checkbox3">Nume</label>
+            </div>
+            <div>
+                <input id="checkbox4" type="checkbox" disabled>
+                <label for="checkbox4">Nume</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>title</legend>
+            <div>
+                <input id="radio1" type="radio" name="group1" checked>
+                <label for="radio1">Nume</label>
+            </div>
+            <div>
+                <input id="radio2" type="radio" name="group1">
+                <label for="radio2">Nume</label>
+            </div>
+            <div>
+                <input id="radio3" type="radio" name="group1">
+                <label for="radio3">Nume</label>
+            </div>
+            <div>
+                <input id="radio4" type="radio" name="group1">
+                <label for="radio4">Nume</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>title</legend>
+            <div>
+                <input id="radio-grup-2-1" type="radio" name="group2">
+                <label for="radio-grup-2-1">Nume</label>
+            </div>
+            <div>
+                <input id="radio-grup-2-2" type="radio" name="group2">
+                <label for="radio-grup-2-2">Nume</label>
+            </div>
+            <div>
+                <input id="radio-grup-2-3" type="radio" name="group2">
+                <label for="radio-grup-2-3">Nume</label>
+            </div>
+            <div>
+                <input id="radio-grup-2-4" type="radio" name="group2">
+                <label for="radio-grup-2-4">Nume</label>
+            </div>
+        </fieldset>
+
+        <input type="text" placeholder="test">
+        <input type="radio">
+        <input type="checkbox">
+        <input type="button" value="button">
+        <input type="password">
+        <textarea rows="4" cols="50" placeholder="placeholder text"></textarea>
+        <select multiple>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+        </select>
+        <select>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+        </select>
+    </form>
+</body>
+
+</html>
