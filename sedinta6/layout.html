@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        var a;
+        console.log(a);
+    </script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-size: 0;
+        }
+
+        .top {
+            height: 100%;
+            background: red;
+        }
+
+        .top_left {
+            display: inline-block;
+            height: 150px;
+            width: 23%;
+            margin-right: 2.66%;
+            background: yellow;
+        }
+
+        .top_middle {
+            display: inline-block;
+            height: 150px;
+            width: 23%;
+            margin-right: 2.66%;
+            background: yellow;
+        }
+
+        .top_right {
+            display: inline-block;
+            height: 150px;
+            width: 23%;
+            margin-right: 2.66%;
+            background: yellow;
+        }
+
+        .top_right2 {
+            display: inline-block;
+            height: 150px;
+            width: 23%;
+            background: yellow;
+        }
+
+        .middle {
+            height: 100px;
+            background: green;
+        }
+
+        .middle_div {
+            background: black;
+            height: inherit;
+        }
+
+        .bottom {
+            display: flex;
+            height: 100px;
+            background: blue;
+        }
+
+        .bottom_left {
+            flex: 1;
+            margin-right: 5px;
+            height: inherit;
+            background: orange;
+        }
+
+        .bottom_right {
+            height: inherit;
+            flex: 1;
+            background: red;
+        }
+
+        .bottom2 {
+
+            height: 100px;
+            background: blue;
+        }
+
+        .bottom2_left {
+            display: inline-block;
+            width: calc(50% - 2.5px);
+            margin-right: 5px;
+            height: inherit;
+            background: orange;
+        }
+
+        .bottom2_right {
+            height: inherit;
+            display: inline-block;
+            width: calc(50% - 2.5px);
+            background: orange;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .top_left {
+                background: green;
+                width: 45%;
+                margin-right: 10%;
+                margin-bottom: 10%;
+            }
+
+            .top_middle {
+                background: green;
+                width: 45%;
+                margin: 0;
+                margin-bottom: 10%;
+            }
+
+            .top_right {
+                background: green;
+                width: 45%;
+                margin-right: 10%;
+            }
+
+            .top_right2 {
+                background: green;
+                width: 45%;
+                margin: 0;
+            }
+        }
+
+
+
+
+
+        @media only screen and (max-width: 1000px) {
+            .top_left {
+                background: green;
+                width: 45%;
+                margin-right: 10%;
+                margin-bottom: 10%;
+            }
+
+            .top_middle {
+                background: green;
+                width: 45%;
+                margin: 0;
+                margin-bottom: 10%;
+            }
+
+            .top_right {
+                background: green;
+                width: 45%;
+                margin-right: 10%;
+            }
+
+            .top_right2 {
+                background: green;
+                width: 45%;
+                margin: 0;
+            }
+
+
+        }
+
+
+
+        @media only screen and (max-width: 600px) {
+            .top_left {
+                background: green;
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10%;
+            }
+
+            .top_middle {
+                background: green;
+                width: 100%;
+                margin: 0;
+                margin-bottom: 10%;
+            }
+
+            .top_right {
+                background: green;
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10%;
+            }
+
+            .top_right2 {
+                background: green;
+                width: 100%;
+                margin: 0;
+            }
+
+            .bottom {
+                flex-direction: column;
+            }
+
+
+            .bottom_left {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="top_left"></div>
+            <div class="top_middle"></div>
+            <div class="top_right"></div>
+            <div class="top_right2"></div>
+        </div>
+        <div class="middle">
+            <div class="middle_div"></div>
+        </div>
+        <div class="bottom">
+            <div class="bottom_left"></div>
+            <div class="bottom_right"></div>
+        </div>
+
+        <div class="bottom2">
+            <div class="bottom2_left"></div>
+            <div class="bottom2_right"></div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+- link responsive grid https://www.w3schools.com/css/css_rwd_grid.asp
+
+Scrieti cate un program pentru fiecare dintre urmatoarele cerinte
+
+1. sa se calculeze suma primelor n numere naturale
+2. Determinati numarul de numere dintr-un interval date fiind limita inferioara a intervalului si limita superioada a intervalului
+3. Calculati aria unui cerc de raza r
+4. Cautati ce inseamna interschimbarea a 2 variabile (ne va folosi mai tarziu)
+5. Calculati media artimetica a 5 numere
+6. Daca se pot fabrica 5 produce in 7 ore de lucru, cate ore sunt necesare pentru a fabrica 8 produse?
+7. Daca 10 muncitori sapa o groapa in 5 ore, in cat timp vor sapa groapa 30 de oameni?

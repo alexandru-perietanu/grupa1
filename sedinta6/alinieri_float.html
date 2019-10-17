@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <style>
+        body {
+            font-size: 0;
+        }
+        .container {
+            background: black;
+            width: 30%;
+            padding: 20px;
+        }
+        .left {
+            display: inline-block;
+            background: red;
+            height: 150px;
+            margin-right: 5px;
+            width: 30%;
+            float: right;
+        }
+
+        .right {
+            width: 100px;
+            display: inline-block;
+            background: yellow;
+            height: 150px;
+            float: left;
+        }
+
+        .inner_div {
+            height: 20px;
+            background: green;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right">
+            <div class="inner_div"></div>
+            <div class="inner_div"></div>
+        </div>
+        <div style="height: 150px; width:0; display: inline-block;"></div>
+    </div>
+</body>
+
+</html>
