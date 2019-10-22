@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+
+        var a = 6;
+        if (a == 5) {
+            console.log("a este 5");
+        } else {
+            console.log("a nu este 5");
+        }
+
+        //Math.random() - [0 - 1) returneaza maxim 0.99999999
+        var numar = Math.round(Math.random() * 1000);
+        console.log(numar);
+        if (numar % 2 == 0) {
+            console.log("numarul este par");
+        } else {
+            console.log("numarul este impar");
+        }
+
+        var numar2 = Math.round(Math.random() * 1000);
+        console.log(numar2);
+        var ultimaCifra = numar2 % 10;
+        if (ultimaCifra % 2 == 0) {
+            console.log("numar2 este par");
+        } else {
+            console.log("numar2 este impar");
+        }
+
+        //var n = Math.round(Math.random() * 1000);
+        var n = 1001;
+        console.log("n = ", n);
+
+        if (n >= 0) {
+            if (n <= 500) {
+                console.log("n apartine [0, 500]");
+            } else {
+                if (n <= 1000) {
+                    console.log("n apartine (500, 1000]");
+                } else {
+                    console.log("n este mai mare ca 1000");
+                }
+            }
+        } else {
+            console.log("n este mai mic ca 0");
+        }
+
+        console.warn("--------------------------");
+        var n1 = 50;//Math.round(Math.random() * 1000);
+        var n2 = 50;//Math.round(Math.random() * 1000);
+        console.log("n1 = ", n1);
+        console.log("n2 = ", n2);
+        if (n1 == n2) {
+            console.log("n1 este egal n2");
+        } else {
+            if (n1 > n2) {
+                console.log("maximul este n1");
+            } else {
+                console.log("maximul este n2");
+            }
+        }
+
+
+        console.warn("--------------------------");
+        var m1 = 10;
+        var m2 = 110;
+        var m3 = 12;
+        var maxim;
+        maxim = m1;
+        if (maxim < m2) {
+            maxim = m2;
+        } 
+        if (maxim < m3) {
+            maxim = m3;
+        }
+        console.log("maximul este ", maxim);
+
+        console.warn("--------------------------");
+        var a1 = 15;
+        var a2 = 10;
+        var aux;
+        if (a2 <= a1) { // <=> a1 > a2
+            //interschimbare
+            aux = a1;
+            a1 = a2;
+            a2 = aux;
+        }
+        console.log("numerele in ordine crescatoare sunt", a1, a2);
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

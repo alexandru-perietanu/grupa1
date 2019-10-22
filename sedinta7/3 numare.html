@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        var a1 = 10;
+        var a2 = 15;
+        var a3 = 5;
+        var aux;
+        if (a1 > a2) {
+            aux = a1;
+            a1 = a2;
+            a2 = aux;
+            // in acest moment stiu sigur ca a1 < a2
+        }
+        if (a1 > a3) {
+            aux = a1;
+            a1 = a3;
+            a3 = aux;
+            // in acest moment stiu sigur ca a1 < a3
+        }
+        // mai ramane sa verific relatia dintre a2 si a3
+        if (a2 > a3) {
+            aux = a2;
+            a2 = a3;
+            a3 = aux;
+        }
+        debugger;
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+1. se genereze un numar aleator cu valori intre [100 si 1000)
+
+2. Dat fiind un numar natural de 3 cifre sa se verifice daca cifrele citite de la stanga la dreapta sunt in ordine crescatoare sau descrescatoare si sa se afiseze acest lucru.
+Exemplue: 146 -> cifrele sunt in ordine crescatoare
+641 -> cifrele sunt in ordine descrescatoare
+142 -> cifrele nu au o ordine anume
+
+3.Sa ve verifice daca un numar este divizibil cu 3 si cu 5.
+Daca este divizibil cu ambele numere se va scrie: Numarul este divizibil cu 15
+
