@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        var n = 1234;
+        var sumaCifrelor = 0;
+        var cifra;
+        while (n > 0) {
+            cifra = n % 10; // iau ultima cifra din numar
+            sumaCifrelor *= 10;
+            sumaCifrelor += cifra; // adaug ultima cifra la suma
+            n = parseInt(n / 10); // elimin ultima cifra din numar
+        }
+        console.log(sumaCifrelor);
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

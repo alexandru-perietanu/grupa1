@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <style>
+        .bila {
+            position: absolute;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background:red;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            
+        }
+    </style>
+    <script>
+        var pozX = 10;
+        var pas = 1;
+        var leftLimit = 10;
+        var rightLimit = 50;
+        var div;
+
+        document.addEventListener("DOMContentLoaded", start);//*
+
+        function start() {//*
+            div = document.getElementsByClassName("bila")[0]; // asa selected elemente
+            div.style.left = 50 + "px"; // asa modific proprietati din stil
+        }
+
+        setInterval(miscaBila, 10);
+        
+        function miscaBila() {
+            pozX += pas;
+            if (pozX > rightLimit || pozX < leftLimit) {
+                console.log(pozX);
+                pas *= -1;
+            } 
+            div.style.width = pozX + "px";
+            div.style.height = pozX + "px";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="bila"></div>
+</body>
+
+</html>

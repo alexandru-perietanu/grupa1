@@ -1,0 +1,18 @@
+﻿1. dat fiind un numar natural n sa se verifice daca acest numar citit de la stanga la dreapta este egal cu numarul citit de la drepata la stanga.
+de exemplu: 1345654321
+
+2. date fiind 2 numere n si m de maxim 7 cifre sa se uneasca aceste numere.
+exemplu: n = 1235; m = 6789; => 12356789
+
+3. Sa se calculeze n la puterea m folosind un while si apoi folosind un for
+
+4. sa se genereze 100 de numere aleatoare de maxim 4 cifre si sa se afiseze doar cele pare.
+
+5. Să se scrie un program care să găsească toate pătratele perfecte mai mici ca n.
+
+6. Să se scrie un program care sa verifice dacă un număr este prim. (Cautati ce proprietati are un numar prim)
+
+7. Se sa genereze o secventa de 100 de numere de maxim 4 cifre. Sa se afle maximul si minimul din cadrul acestei secvente.
+
+8. Sa se genereze un numar aleator de maxim 12 cifre. Daca numarul de cifre este par sa se imparta in 2 numere acest numar in felul urmator:
+n = 12345678 => n1 = 1234 si n2 = 5678;

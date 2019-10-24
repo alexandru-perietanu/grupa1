@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        var n = 100 + Math.floor(Math.random() * 900);
+        console.log(n);
+        var u;
+        var z;
+        var s;
+        u = n % 10; // asta imi da ultima cifra
+        n = parseInt(n / 10); // elimin ultima cifra din numar
+        z = n % 10;
+        n = parseInt(n / 10);
+        s = n % 10;
+        console.log(s, z, u);
+
+        if (s < z && z < u) {
+            console.log("cifrele sunt in oridne crescatoare");
+        } else if (s > z && z > u) {
+                console.log("cifrele sunt in oridne descrescatoare");
+        } else {
+            console.log("cifrele au o ordine aleatoare");
+        }
+
+        var nr = Math.floor(Math.random() * 5);
+        if (nr == 0) {
+            console.log(nr, 0);
+        } else if (nr == 1) {
+            console.log(nr, 1);
+        } else if (nr == 2) {
+            console.log(nr, 2);
+        } else if (nr == 3) {
+            console.log(nr, 3);
+        } else {
+            console.log(nr, 4);
+        }
+
+        switch (nr) {
+            case 0:
+                console.log(nr, 0);
+                break;
+            case 1:
+                console.log(nr, 1);
+                break;
+            case 2:
+                console.log(nr, 2);
+                break;
+            case 3:
+                console.log(nr, 3);
+                break;
+            default:
+                console.log(nr, 4); 
+                break;
+        }
+        /*
+        if () {
+
+        } else if () {
+
+        } else if () {
+
+        } else if () {
+
+        } else if () {
+
+        } else if () {
+
+        } else {
+
+        }
+        ]
+        */
+        
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>
