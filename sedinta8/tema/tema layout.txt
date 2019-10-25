@@ -1,0 +1,8 @@
+- implementati comportamentele sau designul din zona incercuita cu rosu din urmatoarele siteuri
+- pozele sunt salvate cu numele siteului
+1. https://www.goodasgoldshop.com/ - comportament 
+2. https://shwoodshop.com/ - comportamentul din partea de jos a paginii
+3. https://boostedboards.com/ro/ - comportamentul de hover de pe imaginile incercuite
+4. https://kinhr.com/ - faceti headerul sa fie mereu peste pagina ca pe acest site
+5. https://seastreak.com/ - efectul de hover de pe imaginile incercuite
+6. https://toggl.com/ - designul si comportamentul din zona incercuita
