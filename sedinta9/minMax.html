@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        var min;
+        var max;
+        // fac prima generare pentru a avea un numar cu care sa initializez minimul si maximul
+        var numarGenerat = Math.floor(Math.random() * 10000);
+        min = numarGenerat; // initializez min cu primul numar generat
+        max = numarGenerat; //initializez max cu primul numar generat
+        // daca am facut o generare inseamna ca mai trebuie sa fac 99 de generari pentru a avea 100
+        for (var i = 0; i < 99; i++) {
+            numarGenerat = Math.floor(Math.random() * 10000);
+            if (min > numarGenerat) { // daca min este mai mare ca numarul generat inseamna ca trebuie sa updatez valoare minimului
+                min = numarGenerat;
+            } 
+            if (max < numarGenerat) { // daca max este mai mic ca numarul generat inseamna ca trebuie sa updatez valoare maximului
+                max = numarGenerat;
+            }
+
+        }
+        console.log(min);
+        console.log(max);
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

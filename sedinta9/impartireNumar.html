@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+
+        var numarGenerat = Math.floor(Math.random() * 1000000000000);
+        var numarCifre = 0;
+        console.log(numarGenerat);
+        // prima data trebuie sa numar cate cifre are numarul
+        // pentru a numara cate cifre are voi fi nevoit sa il distrug deci voi retine valoarea sa in alta variabila
+        var copieNumarGenerat = numarGenerat;
+
+        while (numarGenerat > 0) {
+            numarCifre++;
+            numarGenerat = Math.floor(numarGenerat / 10);
+        }
+
+        console.log(numarCifre);
+        var n1 = 0;
+        var n2 = 0;
+        // verific daca are un numar par de cifre
+        if (numarCifre % 2 == 0) {
+            // extrag partea din dreapta a numarul
+            n2 = copieNumarGenerat % (10 ** (numarCifre / 2));
+            // extrag partea din stanga
+            n1 = parseInt(copieNumarGenerat / (10 ** (numarCifre / 2)));
+        }
+        console.log(n1);
+        console.log(n2);
+
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>
