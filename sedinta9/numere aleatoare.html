@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        var n = 100;
+        var numarGenerat;
+        for (var i = 0; i < 100; i++) {
+            /*
+            Math.random() returneaza un numar din intervalul [0, 1)
+            dupa ce inmultesc rezultateul cu 10000 obtin un numar din intervalul [0, 10000)
+            Math.floor() imi pastreaza doar partea intreaga a numarului
+            */
+            numarGenerat = Math.floor(Math.random() * 10000); 
+            if (numarGenerat % 2 == 0) {
+                console.log(numarGenerat);
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

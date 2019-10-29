@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        var estePrim = isPrime(131);
+        console.log(estePrim);
+
+        function isPrime(n) {
+            var nrDivizori = 0;
+            if (n > 2 && n % 2 == 0) { // fiindca singurul numar prim par este 2 testez divizibilitatea cu 2 numai pentru numere mai mari ca 2
+                return false;
+            } else if (n == 2) { // singurul numar par si prim este 2
+                return true;
+            } else {
+                for (var i = 3; i <= n / 2; i += 2) { // pot merge din 2 in 2 fiindca am testat separat daca numarul este par
+                    if (n % i == 0) { // testez daca n se divide cu i
+                        nrDivizori++;
+                    }
+                }
+                /*in cazul acesta testez cu 0 fiindca nu ar trebui sa exista niciun divizor intre 3 si jumatatea numarului ca el sa fie prim*/
+                if (nrDivizori == 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+<script>
+    /* solutia 1 
+    Aceasta solutie face numarul cel mai mic de operatii
+    */
+    var n = 1234;
+    var m = 6789;
+    var m2 = m; // creez o copie a lui m fiindca il voi distruge pe m atunci cand ii numar ciferele
+    var numarCifre = 0; // variabila in care voi numara cate cifre sunt
+    while (m > 0) {
+        numarCifre++; // numar la a cata cifra sunt
+        m = Math.floor(m / 10); // elimin ultima cifra din nm
+    }
+    var numarZerouriPentruN = 10 ** numarCifre; 
+    n *= numarZerouriPentruN; // pun numarCifre zerouri dupa n, operatorul ** ridica la putere
+    n += m2;
+    console.log(n);
+
+    /* solutia 2 
+        Aceasta solutie foloseste niste converstii si functii de sistem ce sunt ineficiente    
+    */
+    var n1 = 1234;
+    var m1 = 6789;
+    var unit = "" + n1 + m1; // in momentul in care adun un numar cu un string, numarul devine string
+    var numarUnit = parseInt(unit); // trec de la string inapoi la numar
+    console.log(numarUnit);
+
+    /* solutia 3 
+        acesta solutie face de 2 ori mai multe operatii ca solutia 1
+        aceasta solutie nu functioneaza pentru un numar care se termin in 0 deci nu este o solutia corecta
+    */
+    var n3 = 1234;
+    var m3 = 6789;
+    var m3Copie = m3;
+    var m3Inversat = 0;
+    var uc;
+    while (m3 > 0) { // daca aici am 4 repetari 
+        uc = m3 % 10; 
+        m3Inversat *= 10;
+        m3Inversat += uc; 
+        m3 = parseInt(m3 / 10); 
+    }
+    // in acest moment m3Inversat = 9876 si m3 = 0;
+
+    // adaug la n3 cifrele din m3
+    while (m3Inversat > 0) { // aici voi avea tot patru repetari
+        uc = m3Inversat % 10; 
+        n3 *= 10;
+        n3 += uc; 
+        m3Inversat = parseInt(m3Inversat / 10); 
+    }
+    console.log(n3);
+
+</script>
+</head>
+
+<body>
+The content of the document......
+</body>
+
+</html>

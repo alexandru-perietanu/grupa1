@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        /* solutia 1 */
+        var n = 10;
+        var nInitial = n; // retin valoare initiala a lui n fiindca urmeaza sa modific n
+        var m = 5;
+        while (m > 1) {
+            n *= nInitial; // <=> n = n * nInitial;
+            console.log("m", m);
+            m--;
+        }
+        console.log(n);
+
+        /* solutia 2 */
+        var n2 = 10;
+        var nInitial2 = n2;
+        var m2 = 5;
+        var i = 1;
+        while (i < m2) {
+            n2 *= nInitial2;
+            console.log("i", i);
+            i++;
+        }
+        console.log(n2);
+
+        /* solutia 3 */
+        var produs = 1;
+        var n3 = 10;
+        var m3 = 5;
+        var i2 = 0;
+        while (i2 < m3) {
+            produs *= n3;
+            console.log("i2", i2);
+            i2++;
+        }
+        console.log(produs);
+        
+        /* solutia 4 cu for */
+        var produs2 = 1;
+        for (var j = 0; j < m3; j++) {
+            produs2 *= n3;
+        }
+        console.log(produs2);
+            
+        
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

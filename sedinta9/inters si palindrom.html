@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+
+        function invers(n) {
+            var m = n;
+            var nInvers = 0;
+            var ultimaCifra;
+
+            while (n > 0) { // while-ul se va opri in momentul in care n devina mai mic ca 0
+                ultimaCifra = n % 10; // obtin ultima cifra din numar
+                nInvers *= 10; // mut cifra curenta cu o pozitie in stanga (ex: cifra unitatilor devine cifra zecilor)
+                nInvers += ultimaCifra; // adauga ultima cifra in dreapta, de fiecare data voi avea o noua cifra a unitatilor
+                n = parseInt(n / 10); // elimin ultima cifra din n, n scade in valoare
+            }
+            return nInvers;
+        }
+
+        function palindrom(n) {
+            //folosesc functia definita mai sus
+            var nInvers = invers(n);
+            if (nInvers == n) {
+               return true;
+            } else {
+                return false;
+            }
+        }
+
+        console.log(palindrom(12321));
+
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        /* solutie eficienta */
+        var n = 2;
+        var nrDivizori = 0;
+        if (n > 2 && n % 2 == 0) { // fiindca singurul numar prim par este 2 testez divizibilitatea cu 2 numai pentru numere mai mari ca 2
+            console.log("numarul nu este prim");
+        } else if (n == 2) { // singurul numar par si prim este 2
+            console.log("numarul este prim");
+        } else {
+            for (var i = 3; i <= n / 2; i += 2) { // pot merge din 2 in 2 plecand de la 3 fiindca am testat separat daca numarul este par
+                if (n % i == 0) { // testez daca n se divide cu i
+                    nrDivizori++;
+                }
+            }
+            /*in cazul acesta testez cu 0 fiindca nu ar trebui sa exista niciun divizor intre 3 si jumatatea numarului ca el sa fie prim*/
+            if (nrDivizori == 0) {
+                console.log("numarul este prim");
+            } else {
+                console.log("numarul nu este prim");
+            }
+        }
+
+        /* solutie ineficienta */
+        var nrDivizori2 = 0;
+        for (var i = 1; i <= n; i++) {
+            if (n % i == 0) { // testez daca n se divide cu i
+                nrDivizori2++;
+            }
+        }
+        /*
+        in cazul acestei solutii ma astept ca divizorii sa fie 1 numarul si de asta testez cu 2
+        */
+        if (nrDivizori2 == 2) { 
+            console.log("numarul este prim");
+        } else {
+            console.log("numarul nu este prim");
+        }
+
+        
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

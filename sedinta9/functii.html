@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        var a = 1;
+        var b = 2;
+        var c = suma(a, b);
+        var p = produs(a, b);
+        var c2 = suma2();
+        var x = 10;
+        test();
+
+        function test() {
+            var x = 5;
+            console.log(x);
+        }
+
+        debugger;
+        console.log("c2", c2);
+
+        // aceasta functie calculeaza suma variabilelor a si b (de unde sunt luate aceste variabile???)
+        function suma2() {
+            return a + b;
+        }
+
+        // functie care calculeaza si returneaza suma a 2 numere
+        function suma(x, y) {
+            return x + y;
+        }
+
+        // functie care calculeaza si returneaza produsul a 2 numere
+        function produs(x, y) {
+            return x * y;
+        }
+
+        var d = suma(a, b);
+        console.log(c, d);
+    
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

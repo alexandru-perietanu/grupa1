@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        /* functie simpla fara parametri fara returnare*/
+        helloWorld();
+        helloWorld();
+        helloWorld();
+        helloWorld();
+        helloWorld();
+        function helloWorld() {
+            console.log("helloWorld");
+        }
+
+        /* functie simpla cu returnare */
+        var x = simpleFunctionWithReturn(); // x va avea valoarea returnata
+        function simpleFunctionWithReturn() {
+            // daca functia are return pot asigna valarea returnata unei variabile
+            return 5;
+        }
+        console.log(x);
+
+        /* functie cu parametri */
+        functieCuParametri(4, 5);
+        function functieCuParametri(a, b) {
+            console.log(a, b);
+        }
+
+        /* functie cu parametri cu si return */
+        var z = suma(3, 4);
+        function suma(x, y) {
+            return x + y;
+        }
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        foo();
+        function foo() {
+            return 0;
+            // liniile de cod de dupa un return nu se mai executa
+            console.log("nu ajung aici");
+            console.log("nu ajung aici");
+            console.log("nu ajung aici");
+            console.log("nu ajung aici");
+        }
+        // functia poate return o singura valoare
+        function numarPar(n) {
+            if (n % 2 == 0) {
+                return true; 
+            } else {
+                return false;
+            }
+        }
+
+        var estePar = numarPar(5);
+        console.log(estePar);
+        var estePar2 = numarPar(4);
+        console.log(estePar2);
+
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>
