@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <style>
+        .cerc {
+            display: inline-block;
+            background: red;
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            border-radius: 50%;
+            padding-left: 5px;
+            padding-top: 5px;
+            transform: translate(-50%, -50%)
+        }
+        .secundar {
+            display: inline-block;
+            background: black;
+            width: 100px;
+            height: 2px;
+            position: absolute;
+            transform-origin: 0 0;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var secundar;
+        function start() {
+            var n = 12;
+            var pas = 360 / n;
+            pas = (pas * Math.PI) / 180;
+            console.log(pas);
+            var alpha = -Math.PI / 2 + (30 * Math.PI) / 180;
+            var div;
+            var cx = 300;
+            var cy = 300;
+            var x;
+            var y;
+            var r = 100;
+
+            secundar = document.createElement("div");
+            secundar.className = "secundar";
+            secundar.style.left = cx + "px";
+            secundar.style.top = cy + "px";
+            document.body.appendChild(secundar);
+
+            var date = new Date();
+            
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            //transform: rotate(45deg);
+            secundar.style.transform = "rotate(" + (seconds * 6 - 90) + "deg)";
+
+
+            console.log(hours, minutes, seconds)
+
+            for (var i = 1; i <= n; i++) {
+                div = document.createElement("div");
+                div.className = "cerc";
+                x = cx + Math.cos(alpha) * r;
+                y = cy + Math.sin(alpha) * r;
+                div.style.left = x + "px";
+                div.style.top = y + "px";
+                div.innerHTML = i;
+                document.body.appendChild(div);
+                alpha += pas;
+            }
+            setInterval(tick, 1000);
+        }
+
+        function tick() {
+            var date = new Date();
+            var seconds = date.getSeconds();
+            secundar.style.transform = "rotate(" + (seconds * 6 - 90) + "deg)";
+        }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

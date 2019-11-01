@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+
+        var sumaPanaLa10 = sumaNumerelor(10); //apel
+        console.log(sumaPanaLa10);
+
+        //definire
+        function sumaNumerelor(n) {
+            var suma = 0;
+            for (var i = 1; i <= n; i++) {
+                //suma += i;
+                suma = sumaADouaNumere(suma, i);
+            }
+            return suma;
+        }
+
+        function sumaADouaNumere(a, b) {
+            return a + b;
+        }
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>
