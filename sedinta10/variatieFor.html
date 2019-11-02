@@ -4,17 +4,33 @@
 <head>
     <title>Title of the document</title>
     <script>
+
+        /*
+            for (initializare; conditie de oprire; pas de iterare)
+            pentru un for initializarea, conditie de oprire, pasul de iterare sunt optionale. 
+            Prin optionale ma refer la faptul ca ele nu trebuie sa faca parte din componenta forului dar trebuie sa fie implementate sub alta forma
+
+        */
+
+        // aici initializarea se face in afara forului
         var i = 1;
         for ( ; i < 10 ; i++ ) {
             console.log(i);
         }
         console.log("----------------------");
+        // aici initializarea se face inainte forului
+        // si pastul de iterare se face la finalul forului
         var j = 1;
         for ( ; j < 10 ; ) {
             console.log(j);
             j++
         }
         console.log("----------------------");
+        /*
+        aici initializarea se face inainte forului
+        pasul de iterare se face la final
+        si conditia de oprire este inlocuita un if cu break
+        */
         var k = 1;
         for ( ; ; ) {
             console.log(k);

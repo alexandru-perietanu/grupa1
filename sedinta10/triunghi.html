@@ -5,11 +5,24 @@
     <title>Title of the document</title>
     <script>
         var s;
+        /*
+        Cu acest for afisez mai multe triunghiuri
+        */
         for (var i = 1; i <= 10; i++) {
             s = triunghi(i);
             console.log(s);
         }
 
+        /*
+        acaesta functie va return un String care contine un triunghi de forma
+        0 
+        0 1
+        0 1 2
+        0 1 2 3
+        0 1 2 3 4
+        1 2 3 4 ....n
+        functia se foloseste de functie make line de mai jos
+        */
         function triunghi(n) {
             var s = "";
             var line = "";
@@ -21,6 +34,11 @@
             return s;
         }
 
+        /*
+        acaesta functie imi uneste un numar de cifre care sunt in ordine crescatoare
+        pentru n = 3 va returna  0 1 2
+        pentru n = 10 va returna 0 1 2 3 4 5 6 7 8 9 
+        */
         function makeLine(n) {
             line = "";
             for (var j = 0; j < n; j++) {

@@ -28,16 +28,22 @@
         document.addEventListener("DOMContentLoaded", start);
         var secundar;
         function start() {
+            // n este 12 pentru ca am 12 numere in cadranul unui ceas
             var n = 12;
+            // distanta unghiulara dintre 2 elemente va fi de 360 / 12 de grade
             var pas = 360 / n;
+            // pas il convertesc din grade in radiani
             pas = (pas * Math.PI) / 180;
             console.log(pas);
+            // determin pozitia de unde plec cu pozitionarea numerelor de pe cadran
             var alpha = -Math.PI / 2 + (30 * Math.PI) / 180;
             var div;
+            // cx, cy reprezinte centrul cercului
             var cx = 300;
             var cy = 300;
             var x;
             var y;
+            // taza
             var r = 100;
 
             secundar = document.createElement("div");
@@ -46,17 +52,25 @@
             secundar.style.top = cy + "px";
             document.body.appendChild(secundar);
 
+            //
             var date = new Date();
             
+            // obtin orele minutele si secundele
             var hours = date.getHours();
             var minutes = date.getMinutes();
             var seconds = date.getSeconds();
             //transform: rotate(45deg);
+            /* pozitionez secundarul 
+            Distanta unghiulara de la o sedunca la alta este de 6 grade fiindca am 60 de secunde pe minut
+            360 / 60 = 6
+            -90 este pentru a compensa o rotatie pe care mi-o pune sistemul
+            */
             secundar.style.transform = "rotate(" + (seconds * 6 - 90) + "deg)";
 
 
             console.log(hours, minutes, seconds)
 
+            // for pentru a pozitiona numerele din cadranul ceasului
             for (var i = 1; i <= n; i++) {
                 div = document.createElement("div");
                 div.className = "cerc";
@@ -68,6 +82,7 @@
                 document.body.appendChild(div);
                 alpha += pas;
             }
+            // apelez functie tick o data la 1000 de milisecunde
             setInterval(tick, 1000);
         }
 
