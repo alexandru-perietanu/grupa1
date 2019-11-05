@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        var a = [];
+        for (var i = 0; i < 11; i++) {
+            a.push(i);
+        }
+        console.log(a);
+
+        // metoda asta nu merge, imi intoarce vecctorul original
+        // for (var j = 0; j < 1; j++) {
+        //     a.unshift(a.pop());
+        // }
+        // console.log(a);
+
+
+        // merge
+        var b = [];
+        for (var k = a.length - 1; k >= 0; k--) {
+            b.push(a[k]);
+        }
+        console.log(b);
+
+        console.log("----------------------");
+        console.log(a);
+        var aux;
+        for (var l = 0; l < a.length / 2; l++) {
+            aux = a[l];
+            a[l] = a[a.length - 1 - l];
+            a[a.length - 1 - l] = aux;
+        }
+        console.log(a);
+
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

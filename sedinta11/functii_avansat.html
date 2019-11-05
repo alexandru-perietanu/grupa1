@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        //contextul global
+        var a = 7;
+        function foo() {
+            //contextul local
+            var a = 5;
+            // se va afisa variabila din contextul local
+            console.log(a); 
+            // daca nu declar variabila in contextul local suprascriu variabila din contextul global
+        }
+        foo();
+
+        // exemplu de poluare a spatiuliu global
+        function foo2() {
+            B = 10; // va fi adaugat automat in window
+            console.log(B);
+        }
+        foo2();
+
+        // exemplu de evitare a poluarii spatiului global
+        function foo3() {
+            // pun use strict la inceputul functiei pentru a nu polua spatiul global
+            "use strict"
+            C = 10; 
+            console.log(C);
+        }
+        foo3();
+
+
+        function foo4(a) {
+            // parametru va avea prioritate peste variabila din contextul global
+            console.log(a);
+        }
+        /* pentru apelul acestei functiile se va lua valoarea
+           variabilei a definita la inceputul programului in contextul global
+        */
+        foo4(a);
+
+
+        
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>

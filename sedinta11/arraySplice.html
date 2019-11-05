@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        var a = [];
+        for (var i = 0; i < 10; i++) {
+            a.push(i);
+        }
+        console.log(a);
+
+        // scot primele 3 elemente din vector
+        var newA = a.splice(0, 3);
+        console.log(newA);
+        console.log(a);
+
+        console.log("------------------");
+        // adaug 0, 1, 2 la inceputul vectorului
+        //a.unshift(0, 1, 2); // echivalent cu linia de mai jos
+        a.splice(0, 0, 0, 1, 2);
+        console.log(a);
+
+        console.log("------------------");
+        var a23 =  a.splice(2, 2);
+        console.log(a23);
+        console.log(a);
+
+        
+
+    </script>
+
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>
