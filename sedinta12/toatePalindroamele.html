@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <style>
+        ol {
+            display: inline-block;
+        }
+    </style>
+    <script>
+        var a = [1, 2, 3, 3, 2, 1];
+
+        function palindrom(a) {
+            if (a.length < 2) {
+                return false;
+            }
+            for (var l = 0; l < a.length / 2; l++) {
+                if (a[l] != a[a.length - 1 - l]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function palindromIntreIndexi(a, startIndex, endIndex) {
+            var v = [];
+            for (var i = startIndex; i < endIndex; i++) {
+                v.push(a[i]);
+            }
+            var b = palindrom(v) 
+            if (b) {
+                console.log(v.join(" "));
+            }
+            return b;
+        }
+        //console.log(a.length)
+        for (var i = 0; i < a.length - 1; i++) {
+            for (var j = i + 1; j <= a.length; j++) {
+                //console.log(i, j);
+                palindromIntreIndexi(a, i, j);
+            }
+        }
+
+ 
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

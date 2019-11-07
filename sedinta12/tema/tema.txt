@@ -1,0 +1,27 @@
+1. Gasiti maxiumul si minimul dintr-un vector cu 1000 de numere aleatoare.
+
+2. Afisati pe ecran cele mai mari 10 numere dintr-un vector cu 1000 de numere aleatoare. (cautati pe mdn functia sort)
+
+3. Sa se afiseze pe ecran un ptrat facut din patrate cu dimensiunile de 5x5.
+. . . . . 
+. . . . . 
+. . . . .  buton
+. . . . . 
+. . . . . 
+
+In dreapta patratului sa fie un buton iar cand apasam pe buton sa devina verde un patrat aleator. (Numai un patrat va fi verde la un moment dat)
+
+4. Sa se afiseze pe ecran 5 patrate unul sub altul.
+.
+.
+.
+.
+.
+Cand dau click pe un patrat el se va deplasa in dreapta ecranului.
+Dupa click:
+.
+.
+.
+					.
+.
+Cand un patrat e in dreapta si dau click pe el va reveni la pozitia initiala

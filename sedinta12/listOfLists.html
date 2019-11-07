@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <style>
+        ol {
+            display: inline-block;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            var ol;
+            var li;
+            for (var i = 0; i < 10; i++) {
+                ol = document.createElement("ol");
+                document.body.appendChild(ol);
+                for (var j = 1; j <= 10; j++) {
+                    li = document.createElement("li");
+                    li.innerHTML = j;
+                    ol.appendChild(li);
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

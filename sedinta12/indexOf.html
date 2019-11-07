@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        function indexOf(a, element, fromIndex = 0/*aici am un parametru default*/) {
+            // asa se pot pune parametri default
+            // fromIndex = fromIndex || 0;
+            /*
+                if (fromIndex == undefined) {
+                    fromIndex = 0;
+                }
+            */
+            for (var i = formIndex; i < a.length; i++) {
+                if (element == a[i]) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        var beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+        console.log(indexOf(beasts, 'bison'));
+        // expected output: 1
+
+        // start from index 2
+        console.log(indexOf(beasts, 'bison', 2));
+        // expected output: 4
+
+        console.log(indexOf(beasts, 'giraffe'));
+    // expected output: -1
+
+    </script>
+</head>
+
+<body>
+    The content of the document......
+</body>
+
+</html>
