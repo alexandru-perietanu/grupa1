@@ -11,30 +11,58 @@
     <script>
         var a = [1, 2, 3, 3, 2, 1];
 
+        /*
+        Aceasta functie primeste ca si parametru un vector si verifica daca elemntele sale
+        alcatuiesc un palindrom
+        */
         function palindrom(a) {
+            /* un palidrom este alcatuit din cel putin 2 elemente
+            deci are sens sa ies din functie daca vectorul nu are 2 elemente
+            */
             if (a.length < 2) {
                 return false;
             }
+            /*
+            parcurg vecctorul pana la jumatate
+            */
             for (var l = 0; l < a.length / 2; l++) {
+                /*
+                verific primul element cu ultimul 
+                al doilea cu penultimul si tot asa
+                Daca intalnesc o pereche de elemente care nu-s egale ies din functie fiindca sigur nu am palindrom
+                */
                 if (a[l] != a[a.length - 1 - l]) {
                     return false;
                 }
             }
+            // daca am ajuns in punctul asta sigur e palindrom fiindca elementele verificate pana acum sunt egale
             return true;
         }
 
+        /*
+        aceasta functie construieste un vector nou cu elementele vectorului a aflate intre indexii startIndex si endIndex
+        [startIndex, endIndex]
+        
+        */
         function palindromIntreIndexi(a, startIndex, endIndex) {
             var v = [];
+            // cred ca acest for poate fi inlocuit cu un slice
             for (var i = startIndex; i < endIndex; i++) {
                 v.push(a[i]);
             }
-            var b = palindrom(v) 
+            // folosesc functia de palindrom pe vectorul nou creat
+            var b = palindrom(v);
+
+            // daca e palindrom atunci afisez palindromul
             if (b) {
+                // vezi functia join pe mdn
                 console.log(v.join(" "));
             }
             return b;
         }
         //console.log(a.length)
+        // parcurg toate gruparile de indexi si verific intre ce index se afla palindroame
+        // pentru a verifica indexii care se parcurg decomentati linia cu console.log
         for (var i = 0; i < a.length - 1; i++) {
             for (var j = i + 1; j <= a.length; j++) {
                 //console.log(i, j);
