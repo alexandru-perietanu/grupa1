@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<title>HTML Tutorial</title>
+<script>
+    var v = [];
+    var numarGenerat;
+    var min;
+    var max;
+    var i;
+    // generat 1000 de numere aleatoare si le retin intr-un vector
+    for (i = 0; i < 1000; i++) {
+        numarGenerat = Math.floor(Math.random() * 1000);
+        v.push(numarGenerat);
+    }
+    // initializez min si max cu primul element din lista
+    min = v[0];
+    max = v[0];
+    // caut minimul si maximul
+    for (i = 1; i < 1000; i++) {
+        if (min > v[i]) {
+            min = v[i];
+        }
+        if (max < v[i]) {
+            max = v[i];
+        }
+    }
+    console.log(min);
+    console.log(max);
+
+
+
+</script>
+
+<body>
+
+</body>
+
+</html>

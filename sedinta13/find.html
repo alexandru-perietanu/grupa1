@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<title>HTML Tutorial</title>
+<script>
+    document.addEventListener("DOMContentLoaded", start);
+    function start() {
+        // pun mana pe buton
+        var button = document.getElementsByTagName("button")[0];
+
+        button.addEventListener("click", buttonClick);
+    }
+
+    function buttonClick() {
+        var inputCeCaut;
+        var inputUndeCaut;
+        /*
+            selectez toata tagurile de tip input din DOM
+            getElementsByTagName returneaza o lista, aceasta lista nu e chiar vector
+            vezi MDN pentru mai multe detalii
+            elementele sunt puse in lista in ordinea in care sunt gasite in pagina de sus in jos
+        */
+        var inputs = document.getElementsByTagName("input");
+        inputCeCaut = inputs[0]; // retin inputul unde va fi textul pe care il caut
+        inputUndeCaut = inputs[1]; // retin inputl unde va fi textul in care caut
+        // asa se ia textul dintr-un input
+        var s1 = inputCeCaut.value; // iau valoare pe care o caut
+        var s2 = inputUndeCaut.value; // iau valoare in care caut
+
+        var indexes = [];
+        /* vezi indexOf pe MDN
+        in principiu functioneaza la fel ca la vectori
+        */
+        var index = s2.indexOf(s1);
+        //retin primul undex
+        if (index != -1) {
+            indexes.push(index);
+        }
+
+        //caut in s2 toate aparitiile lui s1
+        while (index != -1) {
+            index = s2.indexOf(s1, index + s1.length);
+           if (index != -1) {
+                indexes.push(index);
+            }
+        }
+
+        console.log(indexes, indexes.length);
+    }
+</script>
+<body>
+    <label for="ceCaut">ce caut</label>
+    <input type="text" name="ceCaut">
+    <label for="undeCaut">unde caut</label>
+    <input type="text" name="undeCaut">
+    <button>verifica</button>
+</body>
+
+</html>

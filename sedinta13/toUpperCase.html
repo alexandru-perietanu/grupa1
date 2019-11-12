@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<title>HTML Tutorial</title>
+<script>
+    var s = "ANA ARE MERE";
+    var s2 = "";
+    var c;
+    // folosec acest vector in caz ca nu am acces la functie String.fromCharCode() (vezi MDN pentru functie)
+    var litereMici = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    for (var i = 0; i < s.length; i++) {
+        c = s.charCodeAt(i);
+        // vezi tabel ASCII
+        // codurile pentru caracterele mici
+        if (c >= 65 && c <= 90) {
+            // 32 este distanta dinre litere mici si litere mari in caz ca ma bazez pe tabelul cu caracterele ASCII
+            //c -= 32;
+            // scad 65 pentru a ajunge la valori intre 0 si 26, adica pozitiile din vectorul meu pentru litere mici
+            s2 += litereMici[c - 65];//String.fromCharCode(c);
+        } else {
+            s2 += s[i];
+        }
+    }
+    s = s2;
+    console.log(s);
+</script>
+
+<body>
+</body>
+
+</html>

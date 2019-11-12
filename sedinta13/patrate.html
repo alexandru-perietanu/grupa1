@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<title>HTML Tutorial</title>
+<style>
+    .basicDiv {
+        position: absolute;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border: 1px solid black;
+    }
+
+    .parentDiv {
+        display: inline-block;
+        width: 100px;
+    }
+</style>
+<script>
+    var parentDiv;
+    var divs = [];
+    var button;
+    var prevN;
+
+    document.addEventListener("DOMContentLoaded", start);
+    function start() {
+        parentDiv = document.createElement("div");
+        parentDiv.className = "parentDiv";
+        document.body.appendChild(parentDiv);
+
+        button = document.createElement("button");
+        document.body.appendChild(button);
+        button.innerHTML = "coloreaza";
+
+        button.addEventListener("click", buttonClick);
+
+        var div;
+        var nX = 0;
+        var nY = 0;
+        for (var i = 1; i <= 25; i++) {
+            div = document.createElement("div");
+            divs.push(div);
+            // pozititionez patratele cate 5 pe linie
+            div.style.top = nY + "px";
+            div.style.left = nX + "px";
+            div.className = "basicDiv";
+            nX += 15;
+            // asa verific ca am terminat o linie de 5 elemente
+            if (i % 5 == 0) {
+                nY += 15;
+                nX = 0;
+            }
+            parentDiv.appendChild(div);
+        }
+    }
+
+    //asetInterval(buttonClick, 150);
+
+    function buttonClick() {
+        /*
+        cum fac resetarea?
+        */
+        /* varianta mai ineficienta de a face resetarea
+        scot backgroundul de la toate divurile
+         for (var i = 0; i < divs.length; i++) {
+             divs[i].style.background = "";
+         }
+        */
+        /*
+        varianta mai eficienta
+        retin elementul modificat si inainte de a face schimbarea scot
+        backgroudul elementului precedent
+        */
+        if (prevN != undefined) {
+            divs[prevN].style.background = "";
+        }
+        var n = Math.floor(Math.random() * 25);
+        // retin ultimul numar generat
+        prevN = n;
+        var div = divs[n];
+        div.style.background = "green";
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>

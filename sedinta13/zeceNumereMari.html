@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<title>HTML Tutorial</title>
+<script>
+    var numarGenerat;
+    var v = [];
+    for (var i = 0; i < 1000; i++) {
+        numarGenerat = Math.floor(Math.random() * 1000);
+        v.push(numarGenerat);
+    }
+    // sortez vectorul
+    v.sort(compareNumbers);
+    console.log(v);
+
+    // functia folosita pentru sortarea numerelor (poate fi gasita pe MDN la array sort)
+    function compareNumbers(a, b) {
+        return a - b;
+    }
+
+    // afisez ultimele 10 elemente fiindca ele vor fi numere cele mai mari din vector
+    for (i = v.length - 10; i < v.length; i++) {
+        console.log(v[i]);
+    }
+</script>
+
+<body>
+
+
+
+</body>
+
+</html>
