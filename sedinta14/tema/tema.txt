@@ -1,0 +1,6 @@
+https://www.mindgames.com/game/Simon
+implementati un joc similar cu acesta.
+Interfata sa fie mai simpla cu 4 sau 6 patrate.
+Generati o secventa de 7 si verificati daca utilizatorul retine aceasta secventa.
+Nu va bateti capul cu sunete.
+Pentru verificare folositi vectori.
