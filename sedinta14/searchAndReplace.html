@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var replace;
+        var toReplace;
+        var text;
+        var button;
+        function start() {
+            replace = document.getElementsByClassName("replace")[0];
+            toReplace = document.getElementsByClassName("toReplace")[0];
+            text = document.getElementsByClassName("text")[0];
+            button = document.getElementsByClassName("button")[0];
+
+            text.value = "ana are mere\nana are mere\nana are mere\nana are mere\n";
+
+            button.addEventListener("click", buttonClick);
+        }
+
+        function buttonClick() {
+            var replaceValue = replace.value;
+            var toReplaceValue = toReplace.value;
+            var textValue = text.value;
+            
+            // face partial treaba, nu merge daca pe toate cazurile
+            // de exemplu daca vreau sa inlocuiesc ana cu ana2 voi avea un ciclu infinit
+            // while (textValue.indexOf(replaceValue) != -1) {
+            //     textValue = textValue.replace(replaceValue, toReplaceValue);
+            // }
+            
+            textValue = textValue.replace(new RegExp(replaceValue, "g"), toReplaceValue);
+            console.log(textValue.replace(replaceValue, toReplaceValue));
+            text.value = textValue;
+        }
+    </script>
+</head>
+
+<body>
+
+    <label for="replace">replace</label>
+    <input name="replace" class="replace" type="text"></input>
+
+    <label for="toReplace">to replace</label>
+    <input name="toReplace" class="toReplace" type="text"></input>
+
+    <label for="text">text</label>
+    <textarea name="text" class="text" type="text" rows="4"></textarea>
+    <button class="button">search and replace</button>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Document</title>
+    <script>
+        var a = {};
+        a.x = 5;
+        a["y"] = 7;
+        console.log(a);
+        console.log(Object.keys(a));
+
+        // asa se parcurg elementele din dictionar
+        // s va fi cheia
+        for (var s in a) {
+            console.log(s, a[s]);
+        }
+
+        var b = {
+            x: 5, 
+            y: 10,
+            "x-y": 15,
+            "x y": 15
+        }
+
+        console.log(b);
+
+        /*
+        var images = [
+            {
+                imageLink: "",
+                name: "",
+                description: "",
+                width: "",
+                height: ""
+            },{
+                imageLink: "",
+                name: "",
+                description: "",
+                width: "",
+                height: ""
+            }
+            {
+                imageLink: "",
+                name: "",
+                description: "",
+                width: "",
+                height: ""
+            }
+        ]
+        */
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

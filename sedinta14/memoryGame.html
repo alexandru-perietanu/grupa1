@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        .patrat {
+            position: absolute;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background: #CCC;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            position: relative;
+            font-size: 0;
+            display: inline-block;
+            width: 440px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var lineLength = 4;
+        var squareColors = {};
+        var colors = ["CornflowerBlue", "CornflowerBlue",
+            "DarkRed", "DarkRed",
+            "DarkOrange", "DarkOrange",
+            "Gold", "Gold",
+            "Indigo", "Indigo",
+            "LimeGreen", "LimeGreen",
+            "Navy", "Navy",
+            "Red", "Red"];
+        var square1;
+        var square2;
+        var container;
+        var noOfGroups = 0;
+        var maxTries = 30;
+        var noOfTries = 0;
+
+        function start() {
+            container = document.createElement("div");
+            container.className = "container";
+            document.body.appendChild(container);
+            createSquares();
+        }
+
+        function createSquares() {
+            colors = ["CornflowerBlue", "CornflowerBlue",
+                "DarkRed", "DarkRed",
+                "DarkOrange", "DarkOrange",
+                "Gold", "Gold",
+                "Indigo", "Indigo",
+                "LimeGreen", "LimeGreen",
+                "Navy", "Navy",
+                "Red", "Red"];
+            var patrat;
+            var id;
+            var index;
+            var nX = 0;
+            var nY = 0;
+            for (var i = 0; i < lineLength; i++) {
+
+                for (var j = 0; j < lineLength; j++) {
+                    patrat = document.createElement("div");
+                    patrat.className = "patrat";
+                    patrat.style.left = nX + "px";
+                    patrat.style.top = nY + "px";
+
+                    id = "p-" + i + "-" + j;
+                    patrat.id = id;
+
+                    index = Math.floor(Math.random() * colors.length);
+                    patrat.style.background = colors[index];
+                    squareColors[id] = colors[index];
+                    colors.splice(index, 1);
+
+                    patrat.addEventListener("click", patratClick);
+                    container.appendChild(patrat);
+                    nX += 110;
+                }
+
+                nY += 110;
+                nX = 0;
+
+            }
+        }
+
+        function resetSquares() {
+            var p1 = document.getElementById(square1);
+            var p2 = document.getElementById(square2);
+            p1.style.background = "";
+            p2.style.background = "";
+            square1 = undefined;
+            square2 = undefined;
+            container.style.pointerEvents = "all";
+            noOfTries++;
+            if (noOfTries == maxTries) {
+                noOfTries = 0;
+                noOfGroups = 0;
+                window.alert("ai pierdut");
+                container.innerHTML = "";
+                createSquares();
+            }
+        }
+
+        function removeSquares() {
+            var p1 = document.getElementById(square1);
+            var p2 = document.getElementById(square2);
+            p1.remove();
+            p2.remove();
+            // p1.style.visibility = "hidden";
+            // p2.style.visibility = "hidden";
+            // p1.style.display = "none";
+            // p2.style.display = "none";
+            square1 = undefined;
+            square2 = undefined;
+            container.style.pointerEvents = "all";
+            noOfGroups++;
+            if (noOfGroups == 8) {
+                noOfTries = 0;
+                noOfGroups = 0;
+                window.alert("ai castigat");
+                createSquares();
+            }
+        }
+
+        function patratClick() {
+            // console.log("click");
+            var id = this.id;
+            if (square1 == undefined) {
+                square1 = id;
+                this.style.background = squareColors[id];
+            } else {
+                if (square1 == id) {
+                    return;
+                }
+                //merg mai departe cu testele
+                square2 = id;
+                this.style.background = squareColors[id];
+                console.log(square1, square2);
+                // verific ca patratele au culori identice
+                if (squareColors[square1] == squareColors[square2]) {
+                    // trbuie sa scot patratelele
+                    container.style.pointerEvents = "none";
+                    setTimeout(removeSquares, 100);
+                } else {
+                    container.style.pointerEvents = "none";
+                    setTimeout(resetSquares, 100);
+                    // trebuie sa resetez patratelele
+                }
+
+            }
+            //console.log(this.id, squareColors[this.id]);
+            //this.style.background = squareColors[this.id];
+
+        }            
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
