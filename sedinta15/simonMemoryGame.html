@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative;
+            display: inline-block;
+            width: 440px;
+        }
+        .patrat {
+            position: absolute;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: 3px solid black;
+        }
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        //dictionar sau hashmap
+        // in stanga am cheile si in dreapta valorile
+        var colorHashMap = {
+            "green": "greenyellow",
+            "firebrick": "red",
+            "goldenrod": "gold",
+            "grey": "lightgrey",
+            "orangered": "orange",
+            "purple": "rebeccapurple",
+            "yellow": "yellowgreen",
+            "white": "thistle",
+            "skyblue": "slateblue"
+        };
+        var container;
+        var squareIds = []; // aici voi tine id-urile patratelor pe care le voi crea
+        var sequence = []; // ordinea in care se aprind patratele
+        var diff = 5; // dificultate
+        var index = 0; // cu aceasta variabila voi numara patratele pe care le voi lumina la inceputul jocului
+        var newSequence = []; // aici voi retine indexul patratelor pe care dau click
+
+
+        function start() {
+            container = document.createElement("div");
+            container.className = "container";
+            document.body.appendChild(container);
+            // blochez toate evenimentele mouseului pe elementul container
+            container.style.pointerEvents = "none";
+
+            // creez si pun pe ecran patratele
+            createSquares();
+            // generez aleator ordinea in care vor trebui selectate patratele
+            generateSequence();
+            // incep secventa de luminare
+            light();
+        }
+
+        // generez o secventa de lungime diff de numere in intervalul [0, 8]
+        function generateSequence() {
+            for (var i = 0; i < diff; i++) {
+                sequence.push(Math.floor(Math.random() * 9));   
+            }
+            console.log(sequence);
+        }
+
+        function createSquares() {
+            // asa obtin cheile dintr-un dictionar
+            var colors = Object.keys(colorHashMap);
+            var patrat;
+            var id;
+            var nX = 0;
+            var nY = 0;
+            var index = 0; 
+            for (var i = 0; i < 3; i++) {
+                for (var j = 0; j < 3; j++) {
+                    patrat = document.createElement("div");
+                    patrat.className = "patrat";
+                    patrat.style.left = nX + "px"; //`${nY}px`
+                    patrat.style.top = `${nY}px`;
+
+                    id = `p-${i}-${j}`; // = "p-" + i + "-" + j;
+                    // adaug idurile in vectorul de iduri
+                    squareIds.push(id);
+                    patrat.id = id;
+                    patrat.style.background = colors[index];
+                    index++;
+                    container.appendChild(patrat);
+                    nX += 110;
+                    patrat.addEventListener("mouseover", patratMouseOver);
+                    patrat.addEventListener("mouseout", patratMouseOut);
+                    patrat.addEventListener("mousedown", patratMouseDown);
+                    patrat.addEventListener("mouseup", patratMouseUp);
+
+                }
+                nY += 110;
+                nX = 0;
+            }
+            console.log(squareIds);
+        }
+
+        function patratMouseDown() {
+            this.style.borderColor = "red";
+            // caut indexul elementului in vectorul de iduri folosind indexOf
+            var clickedIndex = squareIds.indexOf(this.id);
+            // populez vectorul pentru secventa noua cu indexul pe care tocmai l-am aflat
+            newSequence.push(clickedIndex);
+
+            // caut sa verific daca indexii din secventa generata la inceput sunt egali cu indexii din secventa noua
+            // daca gasesc un index care nu este egal termin jocul si ies din functie
+            for (var i = 0; i < newSequence.length; i++) {
+                if (newSequence[i] != sequence[i]) {
+                    window.alert("ai pierdut");
+                    //document.location.reload(); // reincerc pagina deci reincep jocul
+                    window.location = "simonMemoryGame.html";
+                    return;
+                }
+            }
+            // daca am ajung in acest punct inseama ca elementele din cei 2 vectori sunt egali unu cate unul
+            // daca i este egal cu lungimea vectorului initial inseamna ca am parcurs toate elementele si am castigat
+            if (i == sequence.length) {
+                window.alert("ai castigat");
+                document.location.reload(); // reincerc pagina deci reincep jocul
+            }
+        }
+
+        function patratMouseUp() {
+            this.style.borderColor = "black";
+        }
+        
+
+        function patratMouseOver() {
+            //console.log(this.style.background);
+            //console.log(colorHashMap[this.style.background]);
+            this.style.background = colorHashMap[this.style.background];
+        }
+
+        function patratMouseOut() {
+            var value = this.style.background;
+            this.style.background = getKeyForValue(value);
+        }
+
+
+        // aceasta functie imi cauta o cheie in dictionarul definit sus pe baza unei valori
+        function getKeyForValue(value) {
+            // asa se parcurge un dictionar
+            for (var key in colorHashMap) {
+                if (value == colorHashMap[key]) {                   
+                    //break; // ma scoate din for
+                    return key; // ma scoate din functie
+                }
+            }
+            // break-ul m-ar fi adus aici
+        }
+
+        function light() {
+            // selectez elementul index din secventa generata la inceputul jocului
+            // acest element reprezinta o pozitie din vectorul cu iduri
+            var currentIndex = sequence[index];
+            // selected un id pe care lui currentIndex
+            var id = squareIds[currentIndex];
+            // selectez elementul din DOM
+            var element = document.getElementById(id);
+
+            // luminez elementul selectat dupa id folosind dictionarul definit la inceputul programului
+            element.style.background = colorHashMap[element.style.background];
+            element.style.borderColor = "red";
+            // apelez funcitia dim cu o intarziere de 1000 de ms
+            setTimeout(dim, 1000);
+        }
+
+        function dim() {
+            console.log("dim");
+            // la fel ca la inceputul functiei light
+            var currentIndex = sequence[index];
+            var id = squareIds[currentIndex];
+            var element = document.getElementById(id);
+
+            var value = element.style.background;
+            // pe baza valorii selectez cheia
+            element.style.background = getKeyForValue(value);
+            element.style.borderColor = "black";
+            // trec la elementul urmator
+            index++;
+            // daca am luminat toate elementele pot incepe jocul, daca nu apelez light cu o intarziere de 500ms
+            if (index < sequence.length) {
+                setTimeout(light, 500);
+            } else {
+                startGame();
+            }
+        }
+
+        function startGame() {
+            // activez toate elementele mouseului pe elementul container
+            container.style.pointerEvents = "all";
+            console.log("sa incepem");
+        }
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>
