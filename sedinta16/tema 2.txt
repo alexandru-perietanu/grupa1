@@ -1,0 +1,3 @@
+Afisati 5 butoane pe ecran.
+Initial fiecare buton va avea 0 afisat in el.
+Cand fac click pe un buton numarul din interiorul sau sa creasca cu 1, adica voi numara de cate ori am facut click pe fiecare buton in parte.
