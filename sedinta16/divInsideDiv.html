@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        .div1 {
+            display: flex;
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            align-items: center;
+            justify-content: center;
+        }
+        .div2 {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        function start() {
+            var div1 = document.createElement("div");
+            var div2 = document.createElement("div");
+
+            div1.className = "div1";
+            div2.className = "div2";
+
+            div1.addEventListener("mouseenter", div1MouseOver);
+            div2.addEventListener("mouseenter", div2MouseOver);
+
+            div1.addEventListener("mousleave", div1MouseOut);
+            div2.addEventListener("mouseleave", div2MouseOut);
+
+            /*
+            div1.addEventListener("click", div1Click);
+            div2.addEventListener("click", div2Click);
+            */
+
+            document.body.addEventListener("click", div1Click, true); // prin pe capture
+            div1.addEventListener("click", div1Click); // prind pe bubbling
+            document.body.appendChild(div1);
+            div1.appendChild(div2);
+        }
+
+        function div1Click(e) {
+            console.log("click ", "div1ClickCapture");
+            console.log("target ", e.target);
+            console.log("currentTarget ", e.currentTarget);
+            e.stopImmediatePropagation(); // omor evenimentul in faza de capture
+        }
+
+        // function div2Click(e) {
+        //     console.log("click ", this);
+        // }
+        
+        function div1MouseOver(e) {
+            console.log("mouse over", this);
+            this.style.background = "red";
+            this.style.justifyContent = "center";
+        }
+
+        function div2MouseOver(e) {
+            console.log("mouse over", this);
+            this.style.background = "blue";
+
+        }
+
+        function div1MouseOut(e) {
+            console.log("mouse leave", this);
+            this.style.background = "";
+            this.style.justifyContent = "left";
+        }
+
+        function div2MouseOut(e) {
+            console.log("mouse leave", this);
+            this.style.background = "";
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

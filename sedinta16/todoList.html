@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <style>
+        .item {
+            width: 200px;
+            border: 1px solid black;
+            display: block;
+            text-align: right;
+        }
+        
+
+        .minus {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 25px;
+        }
+
+        .plus {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: red;
+            text-align: center;
+            line-height: 25px;
+        }
+    </style>
+    <script>
+        var items = [];
+
+        document.addEventListener("DOMContentLoaded", start);
+        function start() {
+            var div = createElement();
+            items.push(div);
+
+            div.addEventListener("click", divClick);
+
+            document.body.appendChild(div);
+        }
+
+        function divClick(e) {
+            if (e.target.className == "item") {
+                return;
+            } else if (e.target.className == "minus") {
+                console.log("click minus");
+                
+                if (items.length < 2) {
+                    return;
+                }
+                //if (items.length > 1) {
+                var currentIndex = items.indexOf(e.currentTarget);
+                items.splice(currentIndex, 1);
+                e.currentTarget.remove();
+                //}
+            } else {
+                //console.log("click plus");
+                var div = createElement();
+                // e.currentTarget este elementul pe care am adaugat listenerul
+                var currentIndex = items.indexOf(e.currentTarget);
+                items.splice(currentIndex, 0, div);
+                div.addEventListener("click", divClick);
+                e.currentTarget.insertAdjacentElement("afterend", div);
+            }
+            console.log(items);
+        }
+
+        function createElement() {
+            var div = document.createElement("div");
+            div.className = "item";
+            var divMinus = document.createElement("div");
+            divMinus.className = "minus";
+            divMinus.innerHTML = "-";
+            var divPlus = document.createElement("div");
+            divPlus.className = "plus";
+            divPlus.innerHTML = "+";
+
+            div.appendChild(divMinus);
+            div.appendChild(document.createElement("br"));
+            div.appendChild(divPlus);
+            return div;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
