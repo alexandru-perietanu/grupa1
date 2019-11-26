@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+        div {
+            position: absolute;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: red;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        var div;
+        var canDrag = false;
+        var dx;
+        var dy;
+        var windowWidth;
+        var valMax = 456;
+
+        function start() {
+            div = document.createElement("div");
+            document.body.appendChild(div);
+            div.addEventListener("mousedown", divMouseDown);
+            document.body.addEventListener("mousemove", divMouseMove);
+            document.body.addEventListener("mouseup", divMouseUp);
+            document.body.addEventListener("mouseleave", bodyMouseLeave);
+        }
+
+        function divMouseDown(event) {
+            canDrag = true;
+            windowWidth = window.innerWidth;
+            var bBox = this.getBoundingClientRect();
+            dx = event.clientX - bBox.left;
+            dy = event.clientY - bBox.top;
+            
+        }
+
+        function bodyMouseLeave() {
+            canDrag = false;
+        }
+
+        function divMouseMove(event) {
+            if (canDrag) {
+                //div.style.top = `${event.clientY - dy}px`;
+                var x = event.clientX - dx;
+                if (x < 0) {
+                    x = 0;
+                }
+                //console.log(x + (50 - dx), windowWidth)
+                if (x + 50 >= windowWidth) {
+                    x = windowWidth - 50;
+                }
+                var a = Math.round(x * 100 / (windowWidth - 50));
+                var val = Math.round(a * valMax / 100);
+                console.log(val);
+
+
+                div.style.left = `${x}px`;
+            }
+        }
+
+        function divMouseUp() {
+            canDrag = false;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
