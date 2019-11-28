@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        canvas {
+            /* width: 500px; */
+            /* height: 500px; */
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var canvas;
+        var ctx;
+        function start() {
+            canvas = document.getElementsByTagName("canvas")[0];
+            ctx = canvas.getContext("2d");
+
+            ctx.fillStyle = "green";
+            ctx.fillRect(10, 10, 10, 10);
+
+            canvas.addEventListener("mousemove", canvasMouseMove);
+
+            
+            console.log(canvas);
+        }
+
+        function canvasMouseMove(e) {
+            ctx.fillRect(e.clientX, e.clientY, 1, 1);
+        }
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="500" height="500">
+
+    </canvas>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+
+    <script>
+        window.addEventListener("load", start);
+        var canvas;
+        var ctx;
+        var img
+        function start() {
+            console.log("start");
+            canvas = document.getElementsByTagName("canvas")[0];
+            ctx = canvas.getContext("2d");
+            img = new Image();//document.getElementsByTagName("img")[0];
+            console.log(img)
+            img.crossOrigin = "Anonymous";
+            img.src = "download.jpg";
+            img.addEventListener("load", imgLoaded);
+            img.width = 225;
+            img.height = 224;
+            document.body.appendChild(img);
+
+        }
+
+        function imgLoaded() {
+            console.log("image laoded");
+            ctx.drawImage(img, 0, 0);
+            var data = ctx.getImageData(0, 0, 225, 224);
+            //console.log(data);
+            for (var i = 0; i < data.data.length; i += 4) {
+                data.data[i + 0] = 255 - data.data[i + 0];
+                data.data[i + 1] = 255 - data.data[i + 1];
+                data.data[i + 2] = 255 - data.data[i + 2];
+            }
+            ctx.putImageData(data, 0, 0);
+        }
+
+    </script>
+</head>
+
+<body>
+    <canvas width="225" height="224" style="border: 1px solid black">
+
+    </canvas>
+    <!-- <img src="download.jpg"> -->
+
+</body>
+
+</html>
