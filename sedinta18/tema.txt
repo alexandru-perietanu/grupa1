@@ -1,0 +1,2 @@
+Sa creeze o aplicatie tip paint similara cu cea facuta in clasa doar ca in dreapta vom avea niste seturi de butoane. Un set ne va permite sa alegem tipul de pensula pentru desen (patrata sau circulara) si un alt set de butoane ne va permite sa alegem dimensiunea pesulei (mica, medie mare).
+Alegeti voi ce inseamna mic, mediu, mare.
