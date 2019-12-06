@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        console.log($);
+        $(document).ready(start);
+
+        function start() {
+           console.log($("p").css("background", "red"));
+           $("p").on( "click", handler );
+           console.log($("p.list"));
+           console.log(document.querySelectorAll("p.list"));
+        }
+
+        function handler() {
+            //console.log("click pe paragraf");
+            //console.log(this);
+            // debugger;
+            console.log("backgorun d", $(this).css("background"))
+            if (this.style.background == "green") {
+                $(this).css("background", "red");
+            } else {
+                $(this).css("background", "green");
+            }
+            
+            console.log($(this).innerWidth());
+        }
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Enter the main heading, usually the same as the title.</h1>
+    <p>Be <b>bold</b> in stating your key points. Put them in a list: </p>
+    <ul class="list">
+        <li>The first item in your list</li>
+        <li>The second item; <i>italicize</i> key words</li>
+    </ul>
+    <p>Improve your image by including an image. </p>
+    
+    <p class="list">Add a link to your favorite <a href="https://www.dummies.com/">Web site</a>.
+        Break up your page with a horizontal rule or two. </p>
+    <hr>
+    <p>Finally, link to <a href="page2.html">another page</a> in your own Web site.</p>
+    <!-- And add a copyright notice.-->
+    <p>&#169; Wiley Publishing, 2011</p>
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+folositi jQuery pentru a implementa exercitiul de ora trecuta cu beculetele si cel cu listele (unde mutam elemente din stanga in dreapta).
+Pentru a realiza acest lucru puteti porni de la o copie a fisierului asa cum este el si apoi sa modidicati codul cu elemente specific jQuery. 
+Sfat: Stati cu documentatia in fata.
