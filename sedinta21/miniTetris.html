@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .black {
+            display: inline-block;
+            background: black;
+            width: 50px;
+            height: 50px;
+            margin: 2px;
+            border: 1px solid white;
+            position: absolute;
+        }
+
+        .containerDiv {}
+
+        .white {
+            display: inline-block;
+            background: white;
+            width: 50px;
+            height: 50px;
+            margin: 2px;
+            border: 1px solid white;
+            position: absolute;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var n = 10;
+        var m = 5;
+        var dataMatrix = [];
+        var domMatrix = [];
+        var currentLine = 0;
+        var currentColumn = 2;
+        var containerDiv;
+        var scoreDiv;
+        var squareSize = 51;
+        var interval;
+        var intervalTick = 300;
+        var score = 0;
+        var keyDownIsPressed = false;
+
+        function start() {
+            generateDataMatrix();
+            generateMatrixInDOM();
+            document.body.addEventListener("keydown", bodyKeyDown);
+            document.body.addEventListener("keyup", bodyKeyUp);
+            dataMatrix[currentLine][currentColumn] = 1;
+            interval = setInterval(goDown, intervalTick);
+            paint();
+            //console.table(dataMatrix);
+        }
+
+        function bodyKeyUp(e) {
+            switch (e.code) {
+                case "ArrowDown":
+                    if (keyDownIsPressed == true) {
+                        clearInterval(interval);
+                        interval = setInterval(goDown, intervalTick);
+                        keyDownIsPressed = false;
+                    }
+                    break;
+            }
+        }
+
+
+        function bodyKeyDown(e) {
+            switch (e.code) {
+                case "ArrowLeft":
+                    goLeft();
+                    break;
+                case "ArrowRight":
+                    goRight();
+                    break;
+                case "ArrowDown":
+                    if (keyDownIsPressed == false) {
+                        clearInterval(interval);
+                        interval = setInterval(goDown, intervalTick / 8);
+                        keyDownIsPressed = true;
+                    }
+
+                    break;
+            }
+        }
+
+        function goLeft() {
+            if (currentColumn > 0 && dataMatrix[currentLine][currentColumn - 1] == 0) {
+                dataMatrix[currentLine][currentColumn] = 0;
+                currentColumn--;
+                dataMatrix[currentLine][currentColumn] = 1;
+
+                paint();
+            }
+        }
+
+        function goRight() {
+            if (currentColumn < m && dataMatrix[currentLine][currentColumn + 1] == 0) {
+                dataMatrix[currentLine][currentColumn] = 0;
+                currentColumn++;
+                dataMatrix[currentLine][currentColumn] = 1;
+
+                paint();
+            }
+        }
+
+        function paint() {
+            for (var i = 0; i < n; i++) {
+                for (var j = 0; j < m; j++) {
+                    if (dataMatrix[i][j] == 0) {
+                        domMatrix[i][j].className = "black";
+                    } else {
+                        domMatrix[i][j].className = "white";
+                    }
+                }
+            }
+            if (scoreDiv.innerHTML != score) {
+                scoreDiv.innerHTML = score;
+            }
+
+        }
+
+        function generateTopSquare() {
+            currentLine = 0;
+            currentColumn = 2;
+            if (dataMatrix[currentLine][currentColumn] == 1) {
+                reset();
+            }
+            dataMatrix[currentLine][currentColumn] = 1;
+        }
+
+        function reset() {
+            for (var i = 0; i < n; i++) {
+                for (var j = 0; j < m; j++) {
+                    dataMatrix[i][j] = 0;
+                    domMatrix[i][j].className = "black";
+                }
+            }
+            score = 0;
+        }
+
+        function verifyAndRemoveLastLine() {
+            var lineIsFull = true;
+            for (var j = 0; j < m; j++) {
+                if (dataMatrix[n - 1][j] == 0) {
+                    lineIsFull = false;
+                    break;
+                }
+            }
+
+            if (lineIsFull) {
+                score++;
+                console.log(score);
+                removeLastLine();
+            }
+        }
+
+        function removeLastLine() {
+            for (var j = 0; j < m; j++) {
+                for (var i = n - 1; i > 0; i--) {
+                    dataMatrix[i][j] = dataMatrix[i - 1][j];
+                }
+            }
+        }
+
+        function goDown() {
+            if (currentLine == n - 1) { // testez daca sunt pe ultima linie
+                verifyAndRemoveLastLine();
+                generateTopSquare();
+            } else {
+                if (dataMatrix[currentLine + 1][currentColumn] == 1) { // testez daca patratul de jos e alb
+                    generateTopSquare();
+                } else {
+                    dataMatrix[currentLine][currentColumn] = 0;
+                    currentLine++;
+                    dataMatrix[currentLine][currentColumn] = 1;
+                }
+            }
+            paint();
+        }
+
+        function generateDataMatrix() {
+            for (var i = 0; i < n; i++) {
+                dataMatrix[i] = [];
+                for (var j = 0; j < m; j++) {
+                    dataMatrix[i][j] = 0;
+                }
+            }
+        }
+
+        function generateMatrixInDOM() {
+            containerDiv = document.createElement("div");
+            containerDiv.className = "containerDiv";
+
+            scoreDiv = document.createElement("div");
+            scoreDiv.style.marginLeft = "300px";
+            scoreDiv.innerHTML = 0;
+            var square;
+            var nX = 0;
+            var nY = 0;
+            for (var i = 0; i < n; i++) {
+                domMatrix[i] = [];
+                for (var j = 0; j < m; j++) {
+                    square = document.createElement("div");
+                    domMatrix[i][j] = square;
+                    square.className = "black";
+                    square.style.top = `${nY}px`;
+                    square.style.left = `${nX}px`;
+                    nX += squareSize;
+                    containerDiv.appendChild(square);
+                }
+                nX = 0;
+                nY += squareSize;
+            }
+            document.body.appendChild(containerDiv);
+            document.body.appendChild(scoreDiv);
+        }
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
