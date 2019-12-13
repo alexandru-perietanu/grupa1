@@ -1,0 +1,4 @@
+puneti un patrat pe ecran si scrieti un program care sa respecte urmatoarele cerinte:
+- patratul va putea fi mutat sus jos stanga si dreapta cu ajutorul tastelor
+- patratul se va putea misca doar in zona de 100, 100 -> 500, 500
+- dimensiunea patratului va fi de 10 x 10
