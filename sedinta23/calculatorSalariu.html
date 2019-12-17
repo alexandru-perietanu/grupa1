@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+
+        div {
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var salariuCurentInput;
+        var procentInput;
+        var salariuPeste5AniInput;
+        var salariuPeste10AniInput;
+        var salariuPeste15AniInput;
+
+        var procentBtn;
+        var salar5Btn;
+        var salar10Btn;
+        var salar15Btn;
+
+        var procentMessageSpan;
+
+        function start() {
+            console.log(salariuDinAnulPrecedent(1100, 10));
+            salariuCurentInput = document.getElementById("salarCurent");
+            procentInput = document.getElementById("procent");
+            salariuPeste5AniInput = document.getElementById("salariu5");
+            salariuPeste10AniInput = document.getElementById("salariu10");
+            salariuPeste15AniInput = document.getElementById("salariu15");
+
+            procentBtn = document.getElementById("btn_procent");
+            salar5Btn = document.getElementById("btn_salariu5");
+            salar10Btn = document.getElementById("btn_salariu10");
+            salar15Btn = document.getElementById("btn_salariu15");
+
+            procentMessageSpan = document.getElementById("procentMessage");
+
+            procentBtn.addEventListener("click", procentBtnClick);
+            salar5Btn.addEventListener("click", salar5BtnClick);
+            salar10Btn.addEventListener("click", salar10BtnClick);
+            salar15Btn.addEventListener("click", salar15BtnClick);
+
+            salariuCurentInput.value = 1000;
+
+            procentInput.addEventListener("input", procentInputChange);
+            procentInput.addEventListener("paste", procentInputPaste);
+        }
+
+        function procentInputChange(e) {
+            if (isNaN(parseInt(e.data)) && e.data != "." && e.data != "-") {
+                console.log("value ", procentInput.value);
+                console.log("is nan");
+                procentInput.value = procentInput.value.slice(0, procentInput.value.length - 1);
+            }
+            console.log(e);
+
+        }
+
+        function procentInputPaste(e) {
+            console.log(e);
+            console.log("value  ", procentInput.value);
+            var procent = parseFloat(e.clipboardData.getData("text"));
+            console.log(procent);
+            if (isNaN(procent)) {
+                procent = 0;
+
+            }
+            procentInput.value = procent;
+            e.preventDefault();
+        }
+
+        function procentBtnClick(e) {
+            procentMessageSpan.innerHTML = "";
+            e.preventDefault(); // omoara comportamentul default al browserului
+            var salariuCurent = parseFloat(salariuCurentInput.value);
+            var procent = parseFloat(procentInput.value);
+            if (isNaN(procent)) {
+                procent = 0;
+                procentInput.value = procent;
+            }
+            if (procent < 0) {
+                procentMessageSpan.innerHTML = "procentul nu poate fi mai mic ca 0";
+                return;
+            }
+
+            var valDeAdaugat;
+            for (var i = 1; i <= 15; i++) {
+                valDeAdaugat = Math.round(procent / 100 * salariuCurent);
+                salariuCurent += valDeAdaugat;
+                console.log(salariuCurent);
+                switch (i) {
+                    case 5:
+                        salariuPeste5AniInput.value = salariuCurent;
+                        break;
+                    case 10:
+                        salariuPeste10AniInput.value = salariuCurent;
+                        break;
+                    case 15:
+                        salariuPeste15AniInput.value = salariuCurent;
+                        break;
+                }
+            }
+
+            console.log(salariuCurent, typeof salariuCurent);
+            console.log(procent, typeof procent);
+        }
+
+        function salariuDinAnulPrecedent(salariuCurent, procentMarire) {
+            return Math.round(salariuCurent / (1 + procentMarire / 100));
+        }
+
+        function salar5BtnClick(e) {
+            var salariuPeste5Ani = parseFloat(salariuPeste5AniInput.value);
+            var procent = parseFloat(procentInput.value);
+            var salariuCurent = salariuPeste5Ani;
+            for (var i = 0; i < 5; i++) {
+                salariuCurent = salariuDinAnulPrecedent(salariuCurent, procent);
+            }
+            salariuCurentInput.value = salariuCurent;
+            e.preventDefault();
+        }
+
+        function salar10BtnClick() {
+
+        }
+
+        function salar15BtnClick() {
+
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="salarCurent">Salariu curent</label>
+            <input id="salarCurent" type="text">
+        </div>
+        <div>
+            <label for="procent">procent crestere anual</label>
+            <input required id="procent" type="text">
+            %
+            <button id="btn_procent">Go</button>
+            <span id="procentMessage"></span>
+        </div>
+        <div>
+            <label for="salarCurent">Salariu peste 5 ani</label>
+            <input id="salariu5" type="text">
+            <button id="btn_salariu5">Go</button>
+        </div>
+        <div>
+            <label for="salariu10">Salariu peste 10 ani</label>
+            <input id="salariu10" type="text">
+            <button id="btn_salariu10">Go</button>
+        </div>
+        <div>
+            <label for="salariu15">Salariu peste 15 ani</label>
+            <input id="salariu15" type="text">
+            <button id="btn_salariu15">Go</button>
+        </div>
+
+
+
+    </form>
+    <button>butotn in afara formularului</button>
+
+
+</body>
+
+</html>

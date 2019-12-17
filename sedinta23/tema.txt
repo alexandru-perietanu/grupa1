@@ -1,0 +1,1 @@
+faceti un input care sa permita introducerea a maxim 255 de caractere si undeva in dreapta lui sa imi arate cate caractere mi-au mai ramas pana la 255, in timp ce scriu.

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .square {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: red;
+            margin-right: 10px;
+        }
+    </style>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        var n = 10;
+        $(function () {
+            var div;
+            for (var i = 0; i < n; i++) {
+                div = $("<div></div>");
+                div.addClass("square");
+                //div.appendTo("body");
+                div.attr("id", "div" + i);
+                //console.log(div.attr("id"));
+                $("body").append(div);
+                //div.on("click", divClick);
+
+            }
+            console.log($(".square"));
+            $(".square").on("click", divClick);
+
+
+
+        });
+
+        function divClick() {
+            console.log(this.id);
+        }
+        
+        argumentsTest();
+        argumentsTest(1);
+        argumentsTest(1, 1);
+        argumentsTest(1, 1, 1);
+
+        function argumentsTest() {
+            switch (arguments.length) {
+                case 0:
+                    console.log(0);
+                    break;
+                case 1:
+                    console.log(1);
+                    break;
+                case 2   :
+                    console.log(2);
+                    break;
+                default: 
+                    console.log("arguments.length ", arguments.length);
+                break;
+            }
+        }
+
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
