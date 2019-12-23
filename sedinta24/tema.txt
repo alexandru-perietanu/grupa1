@@ -1,0 +1,7 @@
+1) Pentru galeria implementata faceti ca bulina corespunzatoare pozei curente sa fie colorata diferit.
+
+2) modificati galeria curenta astfel incat sa nu mai fie circulara, ci sa se opreasca la ultima poza cand merg in dreapta si la prima poza cand merg in stanga.
+
+3) modificati galeria curenta astfel incat tranzitia sa nu mai fie stanga dreapta ci sus jos
+
+4) modificati galeria curenta astfel incat tranzitia dintre poze sa se face cu opacity, o poza devine opaca in timp ce cealalta devina transparenta

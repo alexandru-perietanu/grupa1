@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .gallery {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .imagesContainer {
+            display: inline-block;
+            position: absolute;
+            /* 0overflow: hidden; */
+            white-space: nowrap;
+            transition: left 0.5s;
+            left: 0;
+        }
+
+        .bullets {
+            display: inline-block;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+
+        }
+
+        .bullet {
+            display: inline-block;
+            margin-right: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: yellow;
+            cursor: pointer;
+        }
+
+
+        .imageContainer {
+            display: inline-block;
+            position: relative;
+        }
+
+        .image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .leftRightButtons {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .leftButton {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .rightButton {
+            display: inline-block;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: red;
+            right: 0;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var imageLinks = [
+            "images/1.jpg",
+            "images/2.jpg",
+            "images/3.jpg",
+            "images/4.jpg",
+            "images/5.jpeg",
+            "images/6.jpg",
+            "images/7.jpg",
+            "images/8.jpg"
+        ];
+        var galleryDiv;
+        var imagesContainerDiv;
+        var leftRightButtonsDiv;
+        var bulletsDiv;
+        var currentIndex = 0;
+        var galleryWidth = 500;
+        var galleryHeight = 500;
+        var slideShowInterval;
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            createGalleryStructure();
+            loadImages();
+            slideShowInterval = setInterval(nextImage, 2000);
+        }
+
+        function resetTimer() {
+            clearInterval(slideShowInterval);
+            slideShowInterval = setInterval(nextImage, 2000);
+        }
+
+        function nextImage() {
+            currentIndex++;
+            if (currentIndex > imageLinks.length - 1) {
+                currentIndex = 0;
+            }
+            console.log("timer");
+            imagesContainerDiv.style.left = `${galleryWidth * currentIndex * (-1)}px`;
+        }
+
+        function createGalleryStructure() {
+            galleryDiv = document.createElement("div");
+            galleryDiv.className = "gallery";
+            galleryDiv.style.width = `${galleryWidth}px`;
+            galleryDiv.style.height = `${galleryHeight}px`;
+            imagesContainerDiv = document.createElement("div");
+            imagesContainerDiv.className = "imagesContainer";
+            bulletsDiv = document.createElement("div");
+            bulletsDiv.className = "bullets";
+
+            var bullet;
+            for (var i = 0; i < imageLinks.length; i++) {
+                bullet = document.createElement("div");
+                bullet.className = "bullet";
+                bullet.setAttribute("data-index", i);
+                bulletsDiv.appendChild(bullet);
+            }
+            bulletsDiv.addEventListener("click", bulletsClick);
+
+            leftRightButtonsDiv = document.createElement("div");
+            leftRightButtonsDiv.className = "leftRightButtons";
+            leftRightButtonsDiv.style.width = `${galleryWidth}px`;
+
+            var leftButton = document.createElement("div");
+            var rightButton = document.createElement("div");
+            leftButton.className = "leftButton";
+            rightButton.className = "rightButton";
+            leftRightButtonsDiv.appendChild(leftButton);
+            leftRightButtonsDiv.appendChild(rightButton);
+            leftRightButtonsDiv.addEventListener("click", leftRightClick);
+
+            document.body.appendChild(galleryDiv);
+            galleryDiv.appendChild(imagesContainerDiv);
+            galleryDiv.appendChild(bulletsDiv);
+            galleryDiv.appendChild(leftRightButtonsDiv);
+        }
+
+        function bulletsClick(e) {
+            if (e.target.className == "bullet") {
+                currentIndex = parseInt(e.target.dataset.index);
+                imagesContainerDiv.style.left = `${galleryWidth * currentIndex * (-1)}px`;
+                //console.log(typeof e.target.dataset.index, e.target.dataset.index);
+                resetTimer();
+            }
+        }
+
+        function leftRightClick(e) {
+            console.log(e.target.className);
+            if (e.target.className == "leftButton") {
+                currentIndex--;
+                if (currentIndex < 0) {
+                    currentIndex = imageLinks.length - 1;
+                }
+                resetTimer();
+            } else if (e.target.className == "rightButton") {
+                currentIndex++;
+                if (currentIndex > imageLinks.length - 1) {
+                    currentIndex = 0;
+                }
+                resetTimer();
+            }
+            imagesContainerDiv.style.left = `${galleryWidth * currentIndex * (-1)}px`;
+        }
+
+        function loadImages() {
+            var image;
+            var imageContainer;
+            for (var i = 0; i < imageLinks.length; i++) {
+                imageContainer = document.createElement("div");
+                imageContainer.className = "imageContainer";
+                imageContainer.style.width = `${galleryWidth}px`;
+                imageContainer.style.height = `${galleryHeight}px`;
+                imageContainer.style.background = "#" + Math.floor(Math.random() * 0xffffff).toString(16);
+                image = new Image();
+                image.style.maxWidth = `${galleryWidth}px`;
+                image.style.maxHeight = `${galleryHeight}px`;
+                image.src = imageLinks[i];
+                image.className = "image";
+                imageContainer.appendChild(image);
+                imagesContainerDiv.appendChild(imageContainer);
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var messageInput;
+        var counterDiv;
+        var maxLength = 255;
+        function start() {
+            messageInput = document.getElementById("message");
+            counterDiv = document.getElementById("counter");
+            messageInput.addEventListener("input", inputListener);
+        }
+
+        function inputListener(e) {
+            console.log(this.value, this.value.length);
+            console.log(maxLength - this.value.length);
+            counterDiv.innerHTML = maxLength - this.value.length;
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" value="" id="message" maxlength="255" />
+    <div id="counter">a</div>
+</body>
+
+</html>
