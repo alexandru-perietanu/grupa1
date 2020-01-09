@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var data;
+        var contaier;
+        document.addEventListener("DOMContentLoaded", start);
+        function start() {
+            console.log("stary")
+            contaier = document.createElement("div");
+            document.body.appendChild(contaier);
+            loadImage();
+        }
+        
+        function reqListener(event) {
+            data = JSON.parse(this.response);
+            console.log(data);
+            contaier.innerHTML = "";
+
+            var extension = data.url.substring(data.url.lastIndexOf(".") + 1);
+            if (extension.toLowerCase() == "mp4") {
+                var video = document.createElement("video");
+                video.setAttribute("controls", true);
+                var source = document.createElement("source");
+                video.appendChild(source);
+                source.setAttribute("src", data.url);
+                source.setAttribute("type", "video/mp4");
+                contaier.appendChild(video);
+            } else {
+                var img = new Image();
+                img.src = data.url;
+                contaier.appendChild(img);
+            }
+
+        }
+
+        setInterval(loadImage, 5000);
+
+        function loadImage() {
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener("load", reqListener);
+            oReq.open("GET", "https://random.dog/woof.json");
+            //oReq.setRequestHeader("Access-Control-Allow-Origin", "*");
+            oReq.send();
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

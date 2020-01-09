@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // variabile prin date prin valoare
+        var a = 5;
+        var b = a;
+        b++;
+        console.log("a = ", a, "b = ", b);
+
+        // variabile date prin referinta
+        var c = [5, 7];
+        var d = c;
+        d.push(6);
+        console.log(c);
+        console.log(d);
+
+        // 
+        function copyArray(a) {
+            var newArray = [];
+            for (var i = 0; i < a.length; i++) {
+                if (a[i] instanceof Array) {
+                    newArray[i] = copyArray(a[i]);
+                } else {
+                    newArray[i] = a[i];
+                }
+                
+            }
+            return newArray;
+        }
+
+        var e = [[1, 2], [3, 4]];
+        var f = [];
+        for (var i = 0; i < e.length; i++) {
+            if (e[i] instanceof Array) {
+                f[i] = copyArray(e[i]);
+            }
+        }
+        f.push(5);
+        f[0].push(5);
+        console.log("e", e);
+        console.log("f", f);
+
+        l = copyArray(e);
+        l[0].push(10);
+        l[1].push(10);
+        console.log("l ", l);
+
+        console.log("------------");
+        var g = [[1, 2], [3, 4]];
+        var h = [];
+        for (var i = 0; i < g.length; i++) {
+            h[i] = g[i];
+        }
+        h.push(5);
+        h[0].push(5);
+        console.log("g", g);
+        console.log("h", h);
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

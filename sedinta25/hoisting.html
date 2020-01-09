@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let test = "test";
+        var test2 = "test2";
+        var b = 5;
+        var c = 2;
+        var a = (4, 5, b++, c--);
+        const r = 90;
+        //r = 100;
+
+        const arr = [1, 2, 3];
+        //arr = []; // aici arunca eroare
+        arr.push(5);
+        console.log(arr);
+        
+        console.log("a= ", a);
+        console.log("c = ", c);
+        
+        var cinci = (function f() {
+            return 5;
+        })();
+        console.log(cinci);
+
+
+        function f() {
+            console.log("------------------ inainte de if ------------")
+            console.log(b);
+            //console.log(c);
+            if (5 > 3) {
+                var b = 6;
+                let c = 5;
+                console.log("------------------ in if ------------")
+                console.log(b);
+                console.log(c);
+            }
+            console.log("------------------ dupa if ------------")
+            console.log(b);
+            console.log(c);
+
+        }
+        f();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

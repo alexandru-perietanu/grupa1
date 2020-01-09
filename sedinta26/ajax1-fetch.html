@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var data;
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("DOM loaded")
+        }
+
+        fetch('data.json')
+            .then((response) => {
+                return response.json();
+            })
+            .then((myJson) => {
+                displayData(myJson);
+            });
+
+        function displayData(data) {
+            console.log(data.squares);
+            var div;
+            for (var i = 0; i < data.squares.length; i++) {
+                div = document.createElement("div");
+                div.style.width = `${data.squares[i].width}px`;
+                div.style.height = `${data.squares[i].height}px`;
+                div.style.left = `${data.squares[i].x}px`;
+                div.style.top = `${data.squares[i].y}px`;
+                div.style.background = data.squares[i].color;
+                div.style.position = "absolute";
+                div.style.display = "inline-block";
+                div.style.border = `${data.squares[i].boderWidth}px solid ${data.squares[i].borderColor}`;
+                document.body.appendChild(div);
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
