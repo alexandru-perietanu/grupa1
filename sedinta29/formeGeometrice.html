@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="GeometricShape.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Patrulater.js"></script>
+    <script src="Dreptunghi.js"></script>
+    <script src="Patrat.js"></script>
+    <script src="Beeing.js"></script>
+    <script src="Human.js"></script>
+    <script>
+
+        var h = new Human({
+            age: 50,
+            address: "....",
+            casatorit: false
+            //includ aici prop si pentru 
+            //Beeing si pentru Human
+        });
+        var circle = new Circle(50, 50, 100);
+        circle.area = function () {
+            console.log("o functie mai sus");
+        }
+        var circle2 = new Circle(60, 60, 150);
+        console.log(circle.perimeter());
+        console.log(circle.area());
+
+        var d = new Dreptunghi(0, 0, 50, 50);
+        console.log(d.area(), d.perimeter(), d.name);
+
+        var p = new Patrat(40, 40, 30);
+        console.log(p.area(), p.perimeter(), p.name);
+
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        class Casa {
+            constructor(latime, inaltime, lungime, culoare, niveluri) {
+                this.latime = latime;
+                this.inaltime = inaltime;
+                this.lungime = lungime;
+                this.culoare = culoare;
+                this.niveluri = niveluri;
+            }
+
+            construieste() {
+                console.log("construieste");
+            }
+
+            distruge() {
+                console.log("distruge");
+            }
+
+            modifica() {
+                console.log("modifica");
+            }
+
+            calculeazaVolum() {
+                return (this.latime * this.inaltime * this.lungime);
+            }
+        }
+
+        var c1 = new Casa(100, 100, 100, "rosu", 3);
+        var c2 = new Casa(200, 200, 200, "albastru", 2);
+
+        c1.construieste();
+        c2.distruge();
+        c1.modifica();
+        console.log("volum c1 ", c1.calculeazaVolum());
+        console.log("volum c2 ", c2.calculeazaVolum());
+
+
+        debugger;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

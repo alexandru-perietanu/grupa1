@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="Cat.js"></script>
+    <script src="Owner.js"></script>
+    <script>
+        var orphanCat = new Cat({
+            name: "pis pis",
+            breed: "bengal",
+            color: "black",
+            hasFur: true,
+            age: 10,
+            owner: null,
+            tricks: []
+        });
+
+        orphanCat.eat();
+        orphanCat.sleep();
+        orphanCat.doTrick();
+
+        var alex = new Owner({
+            name: "Alex",
+            address: "Iasi",
+            phone: "123",
+            cats: []
+        });
+
+        var felix = new Cat({
+            name: "Felix",
+            breed: "bengal",
+            color: "black",
+            hasFur: true,
+            age: 10,
+            owner: null,
+            tricks: ["spin", "stand", "hi5"]
+        });
+
+        var martin = new Cat({
+            name: "Martin",
+            breed: "bengal",
+            color: "black",
+            hasFur: true,
+            age: 10,
+            owner: null,
+            tricks: ["spin", "stand", "hi5"]
+        });
+        alex.addCat(felix);
+        alex.addCat(martin);
+
+        console.table(alex.cats);
+
+        //console.log("cats of ", alex.name, " ", alex.cats);
+        alex.removeCat("Martin");
+        //console.log("cats of ", alex.name, " ", alex.cats);
+        console.table(alex.cats);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="ballAnimation.js"></script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", start);
+        var balls = [];
+        function start() {
+            var ball;
+            for (var i = 0; i < 10; i++) {
+                ball = new BallAnimation({
+                    startX: Math.floor(Math.random() * 500),
+                    startY: Math.floor(Math.random() * 500),
+                    endX: Math.floor(Math.random() * 500),
+                    endY: Math.floor(Math.random() * 500),
+                    size: 15,
+                    step: 1
+                })
+                balls.push(ball);
+                ball.element.addEventListener("click", ballClick);
+            }
+
+        }
+
+        function ballClick(e) {
+            for (var i = 0; i < 10; i++) {
+                if (this == balls[i].element) {
+
+                    if (balls[i].currentX == balls[i].endX && balls[i].currentY == balls[i].endY) {
+                        balls[i].reset();
+                    } else {
+                        balls[i].startAnimation();
+                    }                    
+                }
+            }
+            console.log(this);
+            // if (this == ballAnim1.element) {
+            //     ballAnim1.startAnimation();
+            // } else if (this == ballAnim2.element) {
+            //     ballAnim2.startAnimation();
+            // }
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
