@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+    <style>
+        .parent {
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            /* border-radius: 50%; */
+        }
+
+        .div1 {
+            position: absolute;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 2px solid rgb(59, 226, 59);
+            /* border-radius: 50%; */
+        }
+
+        .div2 {
+            position: absolute;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 2px solid blue;
+            opacity: 0;
+            transition: opacity 0.2s;
+            box-shadow: 0px 0px 21px -8px rgba(14,27,173,1);
+            /* border-radius: 50%; */
+        }
+
+        /* .green {
+            background: green;
+        } */
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        var div;
+        var div1;
+        var div2;
+        var n = 10;
+        var divs = [];
+        var data = [];
+        var t;
+        var parcurg = 0;
+
+
+        function start() {
+            for (var i = 0; i < n; i++) {
+                div = document.createElement("div");
+                div.className = "parent"
+                div1 = document.createElement("div");
+                div1.className = "div1";
+                div2 = document.createElement("div");
+                div2.className = "div2";
+                document.body.appendChild(div);
+                div.appendChild(div1);
+                div.appendChild(div2);
+                divs.push(div2);
+                data.push(0);
+            }
+        }
+
+        t = setInterval(glow, 100);
+        var contor = 0;
+        var direction = 1;
+
+        function glow() {
+            if (parcurg % 2 == 0) {
+                // divs[contor].className = "green";
+                divs[contor].style.opacity = 1;
+            } else {
+                // divs[contor].className = "";
+                divs[contor].style.opacity = 0;
+            }
+
+            contor += 1  * direction;
+            if (contor < 0 || contor >= n) {
+                direction *= -1;
+                contor += 1  * direction;
+                parcurg++;
+            }
+
+            // contor++;
+            // if (contor >= n) {
+            //     // clearInterval(t); // opreste setInterval-ul care are ciclu infinit
+            //     contor = 0;
+            //     parcurg++;
+            // }
+            console.log(contor);
+
+
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
