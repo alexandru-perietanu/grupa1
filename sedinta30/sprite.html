@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .frame1 {
+            background-image: url("sprite.png");
+            background-position: -20px -10px;
+        }
+        .frame2 {
+            background-image: url("sprite.png");
+            background-position: -45px -10px;
+        }
+        .frame3 {
+            background-image: url("sprite.png");
+            background-position: -72px -10px;
+        }
+        .frame4 {
+            background-image: url("sprite.png");
+            background-position: -101px -10px;
+        }
+        .frame5 {
+            background-image: url("sprite.png");
+            background-position: -124px -10px;
+        }
+        .frame6 {
+            background-image: url("sprite.png");
+            background-position: -153px -10px;
+        }
+        .frame7 {
+            background-image: url("sprite.png");
+            background-position: -185px -10px;
+        }
+        .frame8 {
+            background-image: url("sprite.png");
+            background-position: -217px -10px;
+        }
+    </style>
+    <script src="Sprite.js"></script>
+    <script src="AnimatedSprite.js"></script>
+    <script src="ClickableSprite.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var sp;
+        var animatedSprite;
+        var clickableSprite;
+
+        function start() {
+            sp = new Sprite({
+                x: 0,
+                y: 0,
+                width: 25,
+                height: 35,
+                class: "frame1"
+            });
+
+            clickableSprite = new ClickableSprite({
+                x: 0,
+                y: 0,
+                width: 25,
+                height: 35,
+                class: "frame1",
+                clickCallback: spriteClick.bind(this)
+            });
+
+            animatedSprite = new AnimatedSprite({
+                x: 0,
+                y: 0,
+                width: 25,
+                height: 35,
+                classes: ["frame1",
+                    "frame2",
+                    "frame3",
+                    "frame4",
+                    "frame5",
+                    "frame6",
+                    "frame7",
+                    "frame8"
+                ]
+            });
+
+            document.body.appendChild(sp.element);
+            document.body.appendChild(animatedSprite.element);
+            document.body.appendChild(clickableSprite.element);
+
+
+            clickableSprite.x = 50;
+            clickableSprite.y = 50;    
+            sp.x = 100; // <=> sp.x(100)
+            console.log(sp.x);
+            sp.y = 100;
+        }
+
+        function spriteClick() {
+            sp.x = Math.random() * 1000; 
+            sp.y = Math.random() * 1000;
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
