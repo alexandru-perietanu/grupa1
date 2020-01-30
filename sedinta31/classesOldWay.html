@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        class Rectangle2 {
+            constructor(x, y, width, height) {
+           
+
+                this.x = x;
+                this.y = y;
+                this.height = height;
+                this.width = width;
+            }
+
+            area() {
+
+            }
+
+            
+        }
+
+
+
+        function NewRectangle() {
+            //implicit var this = {}
+            
+            Rectangle.call(this, 0, 0, 50, 50); //super
+             
+            //implicit
+            // return this;
+        }
+        //asa se face extends cu sintaxa veche
+        NewRectangle.prototype = Object.create(Rectangle.prototype);
+
+        var newR = new NewRectangle(); 
+
+        function Rectangle(x, y, width, height) {
+            this.x = x;
+            this.y = y;
+            this.height = height;
+            this.width = width;
+
+            Rectangle.prototype.contor++;
+
+            this.area = function area() {
+
+            }
+
+        }
+
+        Rectangle.prototype.area = function area() {
+
+        }
+
+        Object.assign(Rectangle.prototype, {
+            perimetru: function perimetru() {
+
+            },
+
+            contor: 0
+        })
+
+        var r = new Rectangle(0, 0, 500, 500);
+        var r3 = new Rectangle(0, 0, 500, 500);
+        console.log(r, r3);
+        console.log(r.contor);
+        console.log(r.x, r.y, r.width, r.height);
+
+        var r2 = new Rectangle2(0, 0, 500, 500);
+        console.log(r2);
+        console.log(r2.x, r2.y, r2.width, r2.height);
+
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
