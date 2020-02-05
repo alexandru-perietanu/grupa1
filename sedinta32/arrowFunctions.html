@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var a = (a, b) => {
+            return a + b;
+        }
+        console.log(a(4, 5));
+
+        var b = n => n; // <=>
+        /*
+            function b(n) {
+                return n;
+            }
+        */
+        console.log(b(10));
+
+
+        var c = v => {
+            return v * v;
+        }
+        console.log(c(10));
+
+        var d = {
+            x: 1000
+        }
+        var x = 50;
+        var obj = {
+            x: 90,
+            f: function() {
+                console.log(this);
+                var b = () => {
+                    console.log(this.x);
+                }
+                b.call(d); // nu are niciun efect datorita faptului ca e arrow function
+            }
+        }
+        console.log("----------------------");
+        obj.f(); // 
+        obj.f.call(this); // 
+        obj.f.call(d); // 
+
+
+        var m = (a, b, c) => a + b + c;
+        console.log(m(1, 2, 3);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

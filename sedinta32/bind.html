@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //'use strict'
+        var x = 15;
+        var a = {
+            x: 5, 
+            f: function(a, b) {
+                console.log(arguments, arguments.length);
+                console.log("------", Array.prototype.join.call(arguments, "|||"));
+                console.log("x ", this.x);
+                console.log("a + b" , a + b);
+            }
+        }
+
+        var b = {
+            x: 10
+        }
+
+        var f = a.f.bind(b, 10);
+        var f2 = a.f;
+
+        var f3 = f.bind({x : 90}); // nu pot bind de doua ori
+
+
+        a.f(1, 1); // 5
+        f(5);   // 10  // <=> a.f.call(b, 10)
+        f2(30, 40);  // 15
+
+        f3(0);
+
+        var v = [1, 49, 20, 30, 123, 4];
+        console.log(Math.max.apply(null, v));
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

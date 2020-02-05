@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var a = [1, 2, 3, 4, 5];
+        var b = a.map(k => k * k);
+        console.log(b);
+
+        var c = a.map(function (x) {
+            return x * x;
+        })
+
+        console.log(c);
+
+
+        var m = 2;
+        var d = {
+            m: 10
+        }
+        var newArray = a.map((x, index, array) => x * this.m);
+        var newArray2 = a.map(function (x, index, array) { return x * this.m }.bind(d));
+        console.log(newArray);
+        console.log(newArray2);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
