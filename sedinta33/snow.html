@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="sprite.js"></script>
+    <script src="snowFlake.js"></script>
+
+    <style>
+        body {
+            background-color: black;
+            overflow: hidden;
+        }
+
+        .snowflake {
+            width: 1px;
+            height: 1px;
+            display: inline-block;
+            position: absolute;
+            border-radius: 50%;
+            top: 100px;
+            left : 100px;
+            background-color: white;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var snowFlake;
+        var allFlakes = [];
+        function start() {
+            for (var i = 0; i < 200; i++) {
+                var size = Math.floor(Math.random() * 5) + 1;
+                snowFlake = new SnowFlake({
+                    x: Math.floor(Math.random() * window.innerWidth),
+                    y: Math.floor(Math.random() * window.innerHeight),
+                    width: size,
+                    height: size,
+                    class: "snowflake",
+                });
+                allFlakes.push(snowFlake);
+                document.body.appendChild(snowFlake.element)
+            }
+
+            requestAnimationFrame(moveFlakes);
+        }
+
+        function moveFlakes(){
+            for (var i = 0; i < allFlakes.length; i++) {
+                allFlakes[i].animate();
+            }
+            requestAnimationFrame(moveFlakes);
+        }
+
+        console.log(allFlakes);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
