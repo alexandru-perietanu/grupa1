@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        /*
+            this = window
+            this = undefined in caz de strict mode
+        */
+        f();
+
+
+        function f() {
+
+        }
+
+
+        /*
+        this pentru a.f() = a
+        */
+        var a = {
+            f: function () {
+
+            }
+        }
+        a.f();
+
+        function c() {
+
+        }
+        a.c = c;
+        a.c(); //this = a
+
+        /*
+            this = un obiect nou
+        */
+        function D() {
+
+        }
+
+        var d = new D();
+
+        function E() {
+            // this = {};
+            this.x = 6;
+            var a = {
+                x: 5
+            }
+            return this; // implicit
+        }
+
+        var e = new E();
+        e.x // 
+
+
+        /* bind 
+            thisul va fi cel pasat in bindare, in cazul de fata c
+        */
+        var a = f.bind(c);
+
+        var numere = [23, 324, 3425, 346 ];
+        var max = Math.max.apply(null, numere);
+        var mmin = Math.min.apply(null, numere);
+
+
+        /*
+        arrow function, this va fi contextul lexical
+        contextul lexical se refera la valoarea thisului cand se creeaza functia
+        */
+
+        /* addEventListener
+        this va fi elementul pe care adaug litenerul
+        */
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
