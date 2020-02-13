@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="Graph.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        var url = "https://api.exchangeratesapi.io/history?start_at=2018-01-01&end_at=2018-02-20&base=EUR&symbols=USD,JPY";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        var data;
+        var dates;
+        var dataSeries = [];
+        var dataSeries2 = [];
+        var graph;
+        var graph2;
+        var documentLoaded = false;
+        var dataLoaded = false;
+
+        function start() {
+            documentLoaded = true;
+            startIfEverythingReady();
+
+        }
+
+        function startIfEverythingReady() {
+            if (documentLoaded && dataLoaded) {
+                graph = new Graph({
+                    width: 1000,
+                    height: 300,
+                    dataSeries: dataSeries
+                });
+                document.body.appendChild(graph.canvas);
+
+                graph2 = new Graph({
+                    width: 1000,
+                    height: 300,
+                    dataSeries: dataSeries2
+                });
+                document.body.appendChild(graph2.canvas);
+            }
+        }
+
+        xhr.onload = function () {
+            dataLoaded = true;
+            data = JSON.parse(this.response).rates;
+            dates = Object.keys(data).sort();
+
+            for (var i = 0; i < dates.length; i++) {
+                dataSeries.push({
+                    y: data[dates[i]].USD,
+                    x: dates[i]
+                });
+
+                dataSeries2.push({
+                    y: data[dates[i]].JPY,
+                    x: dates[i]
+                });
+
+            }
+            startIfEverythingReady();
+            console.log(dataSeries);
+        };
+
+        xhr.send();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
