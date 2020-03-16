@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var n = 174;
+        var rest;
+        var cat;
+        var v = [];
+        var baza = 16;
+        var dict = {
+            10: "A",
+            11: "B", 
+            12: "C",
+            13: "D",
+            14: "E",
+            15: "F"
+        };
+
+        do {
+            cat = parseInt(n / baza);
+            rest = n % baza;
+            n = parseInt(n / baza);
+            v.push(rest);
+        } while (cat > 0)
+        v = v.map((item) => { 
+            if (item > 9) {
+                return dict[item];
+            }
+            return item;
+        })
+        console.log(v.reverse().join(""))
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

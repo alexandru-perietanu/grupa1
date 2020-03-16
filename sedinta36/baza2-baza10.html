@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let n = 1011;
+        let s = 0;
+        let uc;
+        let p = 0;
+        while (n > 0) {
+            uc = n % 10;
+            s += uc * 2 ** p;
+            n = parseInt(n / 10);
+            p++;
+        }
+
+        console.log(s);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

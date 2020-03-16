@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var data;
+
+        function reqListener(event) {
+            console.log(this.response);
+        }
+
+        var oReq = new XMLHttpRequest();
+        oReq.requestType = "json";
+        oReq.addEventListener("load", reqListener);
+
+        oReq.open("POST", "http://dummy.restapiexample.com/api/v1/create");
+        oReq.send(JSON.stringify({
+            "name": "test",
+            "salary": "123",
+            "age": "23",
+            "lastname": "ionel"
+        }));
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
