@@ -1,0 +1,9 @@
+Se se implementeze un accordeon similar cu cel de la linkul:
+https://www.w3schools.com/howto/howto_js_accordion.asp
+
+Pentru a popula acordeonul sa se foloseasca un vector care contine obiecte de genul: 
+
+{
+tabName: "section 1", 
+body: "text din body"
+}
