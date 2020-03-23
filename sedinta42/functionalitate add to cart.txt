@@ -1,0 +1,14 @@
+- In partea stanga am o serie de elemente (produse) ce vor fi adaugate in partea stanga cand apas butonul add. 
+- Cand adaug elementul in stanga, textul add devine remove
+- Daca adaug un element de mai multe ori, in dreptul titlului va aparea de cate ori a fost adaugat
+- cand apas remove va scadea numarul din dreptul titlului si daca numarul ajunge la 0, elementul vafi scos
+- coloana din dreapta va fi fixa
+- coloanadin stanga va fi flexibila, deci aici pot fi 2 3 4 elementepe aceeasi linie in functie de cat spatiu am 
+
+
+Indicatii:
+- Folositi cloneNode
+- Ganditi idurile sau clasele astfel incat sa fie usor sa identificati elementele din dreapta
+- pentru identificarea se mai pot folosi si html data attributes (google it)
+- folositi vectori cu obiecte pentru gestiunea elementelor (stim functii pentru a adauga si pentru a sterge un element din interiorul vectorului)
+
