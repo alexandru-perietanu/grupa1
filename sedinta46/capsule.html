@@ -73,7 +73,6 @@
             let plusButton = document.createElement("div");
             plusButton.className = "plusButton";
             plusButton.innerHTML = "+";
-            
             return plusButton;
         }
 
@@ -81,7 +80,6 @@
             let minusButton = document.createElement("div");
             minusButton.className = "minusButton";
             minusButton.innerHTML = "-";
-            //minusButton.addEventListener("click", decrementCounter);
             return minusButton;
         }
 
@@ -93,7 +91,18 @@
 
         }
 
-        function changeCounter() {
+        function changeCounter(e) {
+            let n = parseInt(e.currentTarget.id.split("-")[1]);
+
+            if (e.target.className == "minusButton") {
+                list[n]--;
+                e.currentTarget.getElementsByClassName("textDiv")[0].innerHTML = list[n];
+            } else if (e.target.className == "plusButton") {
+                list[n]++;
+                e.currentTarget.getElementsByClassName("textDiv")[0].innerHTML = list[n];
+            }
+            
+            
 
         }
 
