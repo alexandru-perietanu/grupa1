@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        .capsule {
+            display: inline-block;
+            height: 60px;
+            width: 30px;
+            border-radius: 10px;
+            border: 1px solid black;
+            margin-right: 15px;
+            text-align: center;
+            overflow: hidden;
+            font-size: 0;
+        }
+
+        .textDiv {
+            margin-top: 5px;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .plusButton {
+            display: inline-block;
+            width: 20px;
+            height: 10px;
+            line-height: 10px;
+            font-size: 10px;
+            background: #D5E8D4;
+            border: 1px solid #82B366;
+            cursor: pointer;
+            -webkit-user-select: none;
+        }
+
+        .minusButton {
+            display: inline-block;
+            width: 20px;
+            height: 10px;
+            font-size: 10px;
+            line-height: 10px;
+            background: #F8CECC;
+            border: 1px solid #B85450;
+            cursor: pointer;
+            -webkit-user-select: none;
+        }
+    </style>
+    <script>
+
+        let list = [];
+        let numberOfElements = 10;
+        let interval;
+        let currentIndex;
+        let sens = 1;
+        let timeout;
+
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start(e) {
+
+            populateList();
+            createCapsules();
+        }
+
+        function populateList() {
+            for (let i = 0; i < numberOfElements; i++) {
+                list[i] = 0;
+            }
+        }
+
+        function createPlusButton() {
+            let plusButton = document.createElement("div");
+            plusButton.className = "plusButton";
+            plusButton.innerHTML = "+";
+            return plusButton;
+        }
+
+        function createMinusButton() {
+            let minusButton = document.createElement("div");
+            minusButton.className = "minusButton";
+            minusButton.innerHTML = "-";
+            return minusButton;
+        }
+
+        function createCapsules() {
+            for (let i = 0; i < list.length; i++) {
+                let capsule = createCapsule(list[i], `cap-${i}`);
+                document.body.appendChild(capsule);
+            }
+
+        }
+
+        function changeCounterDown(e) {
+            let n = parseInt(e.currentTarget.id.split("-")[1]);
+            if (e.target.className == "minusButton") {
+                list[n]--;
+                list[n] = limitCounter(list[n], -100, 100);
+                sens = -1;
+                e.currentTarget.getElementsByClassName("textDiv")[0].innerHTML = list[n];
+            } else if (e.target.className == "plusButton") {
+                list[n]++;
+                list[n] = limitCounter(list[n], -100, 100);
+                sens = 1;
+                e.currentTarget.getElementsByClassName("textDiv")[0].innerHTML = list[n];
+            } else {
+                return;
+            }
+
+            document.body.addEventListener("mouseup", changeCounterUp);
+            document.body.addEventListener("mouseleave", changeCounterUp);
+            timeout = setTimeout(startAutoIncrement, 200);
+            currentIndex = n;
+        }
+
+        function startAutoIncrement() {
+            interval = setInterval(updateCounter, 20);
+        }
+
+        function updateCounter() {
+            list[currentIndex] += sens;
+            list[currentIndex] = limitCounter(list[currentIndex], -100, 100);
+            let element = document.getElementById("cap-" + currentIndex);
+            element.getElementsByClassName("textDiv")[0].innerHTML = list[currentIndex];
+        }
+
+        function changeCounterUp(e) {
+            document.body.removeEventListener("mouseup", changeCounterUp);
+            document.body.removeEventListener("mouseleave", changeCounterUp);
+            clearInterval(interval);
+            clearTimeout(timeout);
+        }
+
+        function limitCounter(n, min, max) {
+            if (n > max) {
+                return max;
+            }
+            if (n < min) {
+                return min;
+            }
+            return n;
+        }
+        // function a() {
+
+        // }
+
+        // var b = a();
+        // console.log("b", b);
+
+        function createCapsule(text, id) {
+            let capsule = document.createElement("div");
+            capsule.className = "capsule";
+            capsule.id = id;
+            capsule.addEventListener("mousedown", changeCounterDown);
+
+            let textDiv = document.createElement("div");
+            textDiv.className = "textDiv";
+            textDiv.innerHTML = text;
+            capsule.appendChild(textDiv);
+
+            let buttonContainer = document.createElement("div");
+            capsule.appendChild(buttonContainer);
+
+            let minusButton = createMinusButton();
+            let plusButton = createPlusButton();
+            buttonContainer.appendChild(plusButton);
+            buttonContainer.appendChild(minusButton);
+            return capsule;
+        }
+    </script>
+</head>
+
+<body>
+
+
+
+</body>
+
+</html>
