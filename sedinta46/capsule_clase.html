@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .capsule {
+            display: inline-block;
+            height: 60px;
+            width: 30px;
+            border-radius: 10px;
+            border: 1px solid black;
+            margin-right: 15px;
+            text-align: center;
+            overflow: hidden;
+            font-size: 0;
+        }
+
+        .textDiv {
+            margin-top: 5px;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .plusButton {
+            display: inline-block;
+            width: 20px;
+            height: 10px;
+            line-height: 10px;
+            font-size: 10px;
+            background: #D5E8D4;
+            border: 1px solid #82B366;
+            cursor: pointer;
+            -webkit-user-select: none;
+        }
+
+        .minusButton {
+            display: inline-block;
+            width: 20px;
+            height: 10px;
+            font-size: 10px;
+            line-height: 10px;
+            background: #F8CECC;
+            border: 1px solid #B85450;
+            cursor: pointer;
+            -webkit-user-select: none;
+        }
+
+        .blue .plusButton {
+            background: blue;
+            border: 1px solid blue;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+        }
+
+        .blue .minusButton {
+            background: #CCC;
+            border: 1px solid #CCC;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+        }
+
+        .blue {
+            background: yellow;
+            border: 1px solid red;
+            height: 45px;
+        }
+    </style>
+    <script>
+
+        class Capsule {
+            count = 0;
+            min = -100;
+            max = 100;
+            updateTime = 50;
+            delayTime = 200;
+            element;
+            interval;
+            sens = 1;
+            timeout;
+            class;
+
+            constructor(options) {
+                if (options) {
+                    this.count = options.count ? options.count : this.count;
+                    this.min = options.min ? options.min : this.min;
+                    this.max = options.max ? options.max : this.max;
+                    this.updateTime = options.updateTime ? options.updateTime : this.updateTime;
+                    this.delayTime = options.delayTime ? options.delayTime : this.delayTime;
+                    this.class = options.class ? options.class : this.class;
+                }
+
+                this.changeCounterUp = this.changeCounterUp.bind(this);
+                this.changeCounterDown = this.changeCounterDown.bind(this);
+                this.startAutoIncrement = this.startAutoIncrement.bind(this);
+                this.updateCounter = this.updateCounter.bind(this);
+
+                this.element = this.createCapsule();
+            }
+
+
+            createPlusButton() {
+                let plusButton = document.createElement("div");
+                plusButton.className = "plusButton";
+                plusButton.innerHTML = "+";
+                return plusButton;
+            }
+
+            createMinusButton() {
+                let minusButton = document.createElement("div");
+                minusButton.className = "minusButton";
+                minusButton.innerHTML = "-";
+                return minusButton;
+            }
+
+            changeCounterDown(e) {
+                let n = parseInt(e.currentTarget.id.split("-")[1]);
+                if (e.target.className == "minusButton") {
+                    this.count--;
+                    this.count = this.limitCounter(this.count, this.min, this.max);
+                    this.sens = -1;
+                    e.currentTarget.getElementsByClassName("textDiv")[0].innerHTML = this.count;
+                } else if (e.target.className == "plusButton") {
+                    this.count++;
+                    this.count = this.limitCounter(this.count, this.min, this.max);
+                    this.sens = 1;
+                    e.currentTarget.getElementsByClassName("textDiv")[0].innerHTML = this.count;
+                } else {
+                    return;
+                }
+
+                document.body.addEventListener("mouseup", this.changeCounterUp);
+                document.body.addEventListener("mouseleave", this.changeCounterUp);
+                this.timeout = setTimeout(this.startAutoIncrement, this.delayTime);
+            }
+
+            startAutoIncrement() {
+                this.interval = setInterval(this.updateCounter, this.updateTime);
+            }
+
+            updateCounter() {
+                this.count += this.sens;
+                this.count = this.limitCounter(this.count, this.min, this.max);
+                this.element.getElementsByClassName("textDiv")[0].innerHTML = this.count;
+            }
+
+            changeCounterUp(e) {
+                document.body.removeEventListener("mouseup", this.changeCounterUp);
+                document.body.removeEventListener("mouseleave", this.changeCounterUp);
+                clearInterval(this.interval);
+                clearTimeout(this.timeout);
+            }
+
+            limitCounter(n, min, max) {
+                if (n > max) {
+                    return max;
+                }
+                if (n < min) {
+                    return min;
+                }
+                return n;
+            }
+
+            createCapsule() {
+                let capsule = document.createElement("div");
+                capsule.className = "capsule " + this.class;
+                capsule.addEventListener("mousedown", this.changeCounterDown);
+
+                let textDiv = document.createElement("div");
+                textDiv.className = "textDiv";
+                textDiv.innerHTML = this.count;
+                capsule.appendChild(textDiv);
+
+                let buttonContainer = document.createElement("div");
+                capsule.appendChild(buttonContainer);
+
+                let minusButton = this.createMinusButton();
+                let plusButton = this.createPlusButton();
+                buttonContainer.appendChild(plusButton);
+                buttonContainer.appendChild(minusButton);
+                return capsule;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start(e) {
+            var cap = new Capsule();
+            document.body.appendChild(cap.element);
+
+            var cap2 = new Capsule({
+                count: 10,
+                max: 15,
+                min: 5,
+                class: "blue"
+            });
+            document.body.appendChild(cap2.element);
+
+
+            var cap3 = new Capsule({
+                delayTime: 99999999
+            });
+            document.body.appendChild(cap3.element);
+
+
+            var cap4 = new Capsule({
+                updateTime: 5
+            });
+            document.body.appendChild(cap4.element);
+
+            var cap5 = new Capsule({
+                updateTime: 100
+            });
+            document.body.appendChild(cap5.element);
+        }
+
+    </script>
+</head>
+
+<body>
+
+
+
+</body>
+
+</html>
