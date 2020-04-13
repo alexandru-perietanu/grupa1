@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .product {
+            position: relative;
+            display: inline-block;
+            border: 1px solid black;
+            width: 230px;
+            height: 120px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 5px;
+            font-size: 0;
+
+        }
+
+        .leftColumn {
+            display: inline-block;
+            width: 80%;
+        }
+
+        .rightColumn {
+            width: 20%;
+            vertical-align: top;
+            background: yellow;
+            display: inline-block;
+        }
+
+        .productTitle {
+            font-weight: bold;
+            font-size: 20px;
+            display: inline-block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .productDesc {
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .productImage {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: red;
+        }
+
+        .productLeft {
+            width: 60px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .productRight {
+            display: inline-block;
+            width: 170px;
+            position: relative;
+            height: 100%
+        }
+
+        .productButton {
+            background: blue;
+            display: inline-block;
+            padding: 10px;
+            font-size: 14px;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        .count {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        var products = [
+            {
+                title: "TITLU1",
+                description: "descriere descriere descriere descriere descriere descriere",
+                imgURL: ""
+            },
+            {
+                title: "TITLU2",
+                description: "descriere descriere descriere descriere descriere descriere",
+                imgURL: ""
+            },
+            {
+                title: "TITLU3",
+                description: "descriere descriere descriere descriere descriere descriere",
+                imgURL: ""
+            },
+            {
+                title: "TITLU4",
+                description: "descriere descriere descriere descriere descriere descriere",
+                imgURL: ""
+            },
+            {
+                title: "TITLU5",
+                description: "descriere descriere descriere descriere descriere descriere",
+                imgURL: ""
+            },
+            {
+                title: "TITLU6",
+                description: "descriere descriere descriere descriere descriere descriere",
+                imgURL: ""
+            },
+            {
+                title: "TITLU7",
+                description: "descriere descriere descriere descriere descriere descriere",
+                imgURL: ""
+            },
+            {
+                title: "TITLU8",
+                description: "descriere descriere descriere descriere descriere descriere",
+                imgURL: ""
+            },
+            {
+                title: "TITLU9",
+                description: "descriere descriere descriere descriere descriere descriere",
+                imgURL: ""
+            },
+        ];
+
+        var leftColumn;
+        var rightColumn;
+        var productDict = {};
+
+        function start() {
+            createColumns();
+            createProducts();
+        }
+
+        function createColumns() {
+            leftColumn = document.createElement("div");
+            rightColumn = document.createElement("div");
+
+            leftColumn.className = "leftColumn";
+            rightColumn.className = "rightColumn";
+
+            document.body.appendChild(leftColumn);
+            document.body.appendChild(rightColumn);
+        }
+
+        function createProducts() {
+            var cards = document.createDocumentFragment("div");
+            var prod;
+            for (var i = 0; i < products.length; i++) {
+                prod = createProduct(products[i], "prod-" + i);
+                cards.appendChild(prod);
+            }
+            leftColumn.appendChild(cards);
+        }
+
+        function createProduct(data, id) {
+            var prod = document.createElement("div");
+            var left = document.createElement("div");
+            var right = document.createElement("div");
+            var img = document.createElement("div");
+            var title = document.createElement("div");
+            var desc = document.createElement("div");
+            var button = document.createElement("div");
+
+
+            prod.id = id;
+
+            left.className = "productLeft";
+            right.className = "productRight";
+            prod.className = "product"
+            img.className = "productImage";
+            title.className = "productTitle";
+            desc.className = "productDesc";
+            button.className = "productButton";
+
+            button.innerHTML = "ADD";
+            button.setAttribute("data-searchid", id);
+            button.addEventListener("click", addClick);
+
+            title.innerHTML = data.title;
+            desc.innerHTML = data.description;
+
+            prod.appendChild(left);
+            prod.appendChild(right);
+            left.appendChild(img);
+            right.appendChild(title);
+            right.appendChild(desc);
+            right.appendChild(button);
+            return prod;
+        }
+
+        function addClick(e) {
+            var searchId = e.target.dataset["searchid"];
+            var product = document.getElementById(searchId);
+            //var product = e.target.parentElement.parentElement;
+            var productId = product.id;
+            var index = productId.split("-")[1];
+
+            if (productDict[index] == undefined) {
+                productDict[index] = {
+                    count: 1
+                }
+
+                var clone = product.cloneNode(product, true);
+                var countDiv = document.createElement("div");
+                countDiv.className = "count";
+                clone.appendChild(countDiv);
+                clone.id = "cartProduct-" + index;
+                rightColumn.appendChild(clone);
+
+                var btn = clone.getElementsByClassName("productButton")[0];
+                btn.innerHTML = "REMOVE";
+                btn.addEventListener("click", removeClick);
+                console.log(productDict)
+
+            } else {
+                productDict[index].count++;
+                if (productDict[index].count > 1) {
+                    clone = document.getElementById("cartProduct-" + index);
+                    var countDiv = clone.getElementsByClassName("count")[0];
+                    countDiv.innerHTML = "x" + productDict[index].count;
+                }
+
+            }
+        }
+
+        function removeClick(e) {
+            var searchId = e.target.dataset["searchid"];
+            var index = searchId.split("-")[1];
+            clone = document.getElementById("cartProduct-" + index);
+            var countDiv = clone.getElementsByClassName("count")[0];
+            productDict[index].count--;
+            console.log(productDict[index]);
+            if (productDict[index].count == 0) {
+                var btn = clone.getElementsByClassName("productButton")[0];
+                btn.removeEventListener("click", removeClick);
+                clone.remove();
+                delete productDict[index];
+            }
+            else if (productDict[index].count >= 2) {
+                countDiv.innerHTML = "x" + productDict[index].count;
+            } else if (productDict[index].count < 2 && productDict[index].count > 0) {
+                countDiv.innerHTML = "";
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
