@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+        function code(message, key) {
+            let splitMessage = message.split("");
+            let codedMessage = "";
+            for (let i = 0; i < splitMessage.length; i++) {
+                if (alphabet.indexOf(splitMessage[i]) != -1) {
+                    let currentIndex = alphabet.indexOf(splitMessage[i]);
+                    let newIndex = currentIndex + key;
+
+                    // cazul in care depasesc in dreapta
+                    if (newIndex > alphabet.length - 1) {
+                        newIndex %=  alphabet.length;
+                    } else if (newIndex < 0) {
+                        while (newIndex < 0) {
+                            newIndex = 26 + newIndex;
+                        }
+                    }
+                    codedMessage += alphabet[newIndex]; // ce fac in caz de overflow
+                } else {
+                    codedMessage += splitMessage[i];
+                }
+            }
+            return codedMessage;
+        }
+
+        var fraza = "zebra este mare";
+        var key = 1;
+        var codedMessage = code(fraza, key);
+        var decodedMessage = code(codedMessage, -key);
+        console.log(codedMessage);
+        console.log(decodedMessage);
+    </script>
+</head>
+
+
+<body>
+
+</body>
+
+</html>
