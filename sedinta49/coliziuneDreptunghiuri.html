@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .circle {
+            display: inline-block;
+            position: absolute;
+            background: red;
+        }
+    </style>
+    <script>
+        var rectangles = [
+            {
+                width: 50,
+                height: 50,
+                id: "c1",
+                x: Math.floor(Math.random() * 300),
+                y: Math.floor(Math.random() * 300)
+            },
+            {
+                width: 100,
+                height: 100,
+                id: "c2",
+                x: Math.floor(Math.random() * 300),
+                y: Math.floor(Math.random() * 300)
+            }
+        ];
+        var selectedElement;
+        var dx;
+        var dy;
+
+        document.addEventListener("DOMContentLoaded", start);
+        function start() {
+            createrectangles();
+        }
+
+        function createrectangles() {
+            var circle;
+            for (var i = 0; i < rectangles.length; i++) {
+                circle = document.createElement("div");
+                circle.className = "circle";
+                circle.id = rectangles[i].id;
+                circle.style.width = `${rectangles[i].width}px`;
+                circle.style.height = `${rectangles[i].height}px`;
+                circle.style.left = rectangles[i].x + "px";
+                circle.style.top = rectangles[i].y + "px";
+                circle.addEventListener("mousedown", circleMouseDown);
+                document.body.appendChild(circle);
+            }
+        }
+
+        function circleMouseDown(e) {
+            selectedElement = e.target;
+            var selectedElementModel = rectangles.filter(element => {
+                return element.id == selectedElement.id;
+            })[0];
+            dx = e.clientX - selectedElementModel.x - document.body.scrollLeft;
+            dy = e.clientY - selectedElementModel.y - document.body.scrollTop;
+            document.body.addEventListener("mousemove", bodyMouseMove);
+            document.body.addEventListener("mouseup", bodyMouseUp);
+            document.body.addEventListener("mouseleave", bodyMouseUp);
+        }
+
+        function bodyMouseMove(e) {
+            var selectedElementModel = rectangles.filter(element => {
+                return element.id == selectedElement.id;
+            })[0];
+
+            selectedElementModel.x = e.clientX - dx - document.body.scrollLeft;
+            selectedElementModel.y = e.clientY - dy - document.body.scrollTop;
+            selectedElement.style.left = selectedElementModel.x + "px";
+            selectedElement.style.top = selectedElementModel.y + "px";
+            detectCollision();
+        }
+
+        function detectCollision() {
+            var selectedElementModel = rectangles.filter(element => {
+                return element.id == selectedElement.id;
+            })[0];
+            for (var i = 0; i < rectangles.length; i++) {
+                if (rectangles[i].id != selectedElementModel.id) {
+                    console.log(rectangles[i]);
+                    if (selectedElementModel.x < rectangles[i].x + rectangles[i].width &&
+                        selectedElementModel.x + selectedElementModel.width > rectangles[i].x &&
+                        selectedElementModel.y < rectangles[i].y + rectangles[i].height &&
+                        selectedElementModel.y + selectedElementModel.height > rectangles[i].y) {
+                        let circle = document.getElementById(rectangles[i].id);
+                        circle.style.background = "blue";
+                    } else {
+                        let circle = document.getElementById(rectangles[i].id);
+                        circle.style.background = "red";
+                    }
+                }
+            }
+        }
+
+        /*
+          if (selectedElementModel.x >= rectangles[i].x + rectangles[i].width ||
+            selectedElementModel.x + selectedElementModel.width <= rectangles[i].x ||
+            selectedElementModel.y >= rectangles[i].y + rectangles[i].height ||
+            selectedElementModel.y + selectedElementModel.height <= rectangles[i].y) {
+
+
+
+        */
+
+        function bodyMouseUp() {
+            document.body.removeEventListener("mousemove", bodyMouseMove);
+            document.body.removeEventListener("mouseup", bodyMouseUp);
+            document.body.removeEventListener("mouseleave", bodyMouseUp);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+     body {
+         margin: 0;
+         padding: 0;
+         width: 100vw;
+         height: 100vh;
+     }
+
+     div {
+         background: red;
+         position: absolute;
+         left: 100px;
+         top: 100px;
+         width: 100px;
+         height: 100px;
+         display: inline-block;
+     }
+    </style>
+    <script>
+        /*
+            x = 100;
+            y = 100;
+            width = 100;
+            height = 100;
+        */
+        document.addEventListener("DOMContentLoaded", start);
+        var div;
+        function start() {
+            document.body.addEventListener("mousemove", bodyMouseMove);
+            div = document.getElementsByClassName("rectangle")[0];
+        }
+
+        function bodyMouseMove(e) {
+            var x = e.clientX;
+            var y = e.clientY;
+            if (x >= 100 && x <= 200 && y >= 100 && y <= 200) {
+                div.style.background = "blue";
+            } else {
+                div.style.background = "red";
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="rectangle"></div>
+</body>
+</html>

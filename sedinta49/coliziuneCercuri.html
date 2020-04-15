@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        .circle {
+            display: inline-block;
+            position: absolute;
+            border-radius: 50%;
+            background: red;
+        }
+
+    </style>
+    <script>
+        var circles = [
+            {
+                r: 25,
+                id: "c1",
+                x: Math.floor(Math.random() * 300),
+                y: Math.floor(Math.random() * 300)
+            },
+            {
+                r: 75,
+                id: "c2",
+                x: Math.floor(Math.random() * 300),
+                y: Math.floor(Math.random() * 300)
+            }
+        ];
+        var selectedElement;
+        var dx;
+        var dy;
+
+        document.addEventListener("DOMContentLoaded", start);
+        function start() {
+            createCircles();
+        }
+
+        function createCircles() {
+            var circle;
+            for (var i = 0; i < circles.length; i++) {
+                circle = document.createElement("div");
+                circle.className = "circle";
+                circle.id = circles[i].id;
+                circle.style.width = `${circles[i].r * 2}px`;
+                circle.style.height = `${circles[i].r * 2}px`;
+                circle.style.left = circles[i].x + "px";
+                circle.style.top =  circles[i].y + "px";
+                circle.addEventListener("mousedown", circleMouseDown);
+                document.body.appendChild(circle);
+            }
+        }
+
+        function circleMouseDown(e) {
+            selectedElement = e.target;
+            var selectedElementModel = circles.filter(element => {
+                return element.id == selectedElement.id;
+            })[0];
+            dx = e.clientX - selectedElementModel.x - document.body.scrollLeft;
+            dy = e.clientY - selectedElementModel.y  - document.body.scrollTop;
+            document.body.addEventListener("mousemove", bodyMouseMove);
+            document.body.addEventListener("mouseup", bodyMouseUp);
+            document.body.addEventListener("mouseleave", bodyMouseUp);
+        }
+
+        function bodyMouseMove(e){
+            var selectedElementModel = circles.filter(element => {
+                return element.id == selectedElement.id;
+            })[0];
+            
+            selectedElementModel.x = e.clientX - dx - document.body.scrollLeft;
+            selectedElementModel.y = e.clientY - dy - document.body.scrollTop;
+            selectedElement.style.left = selectedElementModel.x + "px";
+            selectedElement.style.top = selectedElementModel.y + "px";
+            detectCollision();
+        }
+
+        function detectCollision() {
+            var selectedElementModel = circles.filter(element => {
+                return element.id == selectedElement.id;
+            })[0];
+            var dist;
+            var radiusSum;
+            for (var i = 0; i < circles.length; i++) {
+                if (circles[i].id != selectedElementModel.id) {
+                    dist = Math.sqrt(Math.pow((selectedElementModel.x + selectedElementModel.r) - (circles[i].x + circles[i].r), 2) +
+                    Math.pow((selectedElementModel.y + selectedElementModel.r) - (circles[i].y + circles[i].r), 2));
+                    radiusSum = selectedElementModel.r + circles[i].r;
+                    if (dist <= radiusSum) {
+                        let circle = document.getElementById(circles[i].id);
+                        circle.style.background = "blue";
+                    } else {
+                        let circle = document.getElementById(circles[i].id);
+                        circle.style.background = "red";
+                    }
+                }
+            }
+        }
+
+        function bodyMouseUp() {
+            document.body.removeEventListener("mousemove", bodyMouseMove);
+            document.body.removeEventListener("mouseup", bodyMouseUp);
+            document.body.removeEventListener("mouseleave", bodyMouseUp);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

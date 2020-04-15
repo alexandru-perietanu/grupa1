@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            padding: 300px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", incep);
+
+        var clock;
+        var seconds = 0;
+        var minutes = 0;
+        var hours = 0;
+        var miliseconds = 0;
+        var start;
+        var stop;
+        var reset;
+        var secondsFormat;
+        var minutesFormat;
+        var hoursFormat;
+        var milisecondsFormat;
+        var t;
+        var diff;
+        var currentTime;
+
+        function incep() {
+            clock = document.getElementsByTagName("p")[0];
+            start = document.getElementById("start");
+            stop = document.getElementById("stop");
+            reset = document.getElementById("reset");
+            start.addEventListener("click", timer);
+            stop.addEventListener("click", stopTimer);
+            reset.addEventListener("click", resetTimer);
+        }
+
+        function count() {
+
+            miliseconds += 10;
+            if (miliseconds >= 1000) {
+                miliseconds = 0;
+                seconds++;
+                if (seconds >= 60) {
+                    minutes++;
+                    seconds = 0;
+                    if (minutes >= 60) {
+                        hours++;
+                        minutes = 0;
+                    }
+                }
+            }
+
+
+            milisecondsFormat = formatNDigits(miliseconds, 3);
+            secondsFormat = formatNDigits(seconds, 2);
+            minutesFormat = formatNDigits(minutes, 2);
+            hoursFormat = formatNDigits(hours, 2);
+
+            clock.textContent = `${hoursFormat}:${minutesFormat}:${secondsFormat}:${milisecondsFormat}`;
+        }
+
+        function formatNDigits(value, desiredLength) {
+            var s = value.toString();
+            while (s.length < desiredLength) {
+                s = "0" + s;
+            }
+            return s;
+        }
+
+        function timer() {
+            currentTime = Date.now();
+            t = setInterval(count, 10);
+        }
+
+        function stopTimer() {
+            diff = Date.now() - currentTime;
+            console.log("mili", diff, "sec", diff / 1000, "min", diff / 60000);
+            currentTime = Date.now();
+            clearInterval(t);
+        }
+
+        function resetTimer() {
+            clock.textContent = "00:00:00:000";
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
+            miliseconds = 0;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <p>00:00:00:000</p>
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="reset">Reset</button>
+    </div>
+
+</body>
+
+</html>
